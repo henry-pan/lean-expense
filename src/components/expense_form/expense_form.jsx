@@ -12,6 +12,7 @@ class ExpenseForm extends React.Component {
         category: this.props.expense.category,
         cost: this.props.expense.cost,
         date: this.props.expense.date,
+        prevId: this.props.expense.userId,
         errors: []
       };
     } else {
@@ -36,7 +37,14 @@ class ExpenseForm extends React.Component {
     if (isNaN(cost)) newErrors.push("Cost must be numerical!");
     if (!date) newErrors.push("Please enter a date!");
     if (newErrors.length === 0) {
-      this.props.receiveExpense({ id, userId, category, cost, date });
+      if (this.props.expense) {
+        const prevId = this.state.prevId;
+        this.props.receiveExpense({ id, userId, prevId, category, cost, date });
+
+      } else {
+        this.props.receiveExpense({ id, userId, category, cost, date });
+
+      }
       // Reset component after submitting.
       this.setState({ 
         id: new Date().getTime(),

@@ -32,13 +32,14 @@ class UserItem extends React.Component {
     const expensesArr = [...this.props.user.expensesSet];
     let totalExpense = 0;
     expensesArr.forEach(expense => {
+      if (!this.props.expenses[expense]) return;
       totalExpense += this.props.expenses[expense].cost;
     })
     return totalExpense;
   }
 
   render() {
-    const {firstName, lastName, expensesSet} = this.props.user;
+    const {firstName, lastName} = this.props.user;
     return (
       <div className="item">
         <p>{firstName} {lastName}</p>

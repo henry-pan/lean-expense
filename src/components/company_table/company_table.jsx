@@ -1,6 +1,4 @@
 import React from "react";
-// import ExpenseItem from "../expense_item/expense_item";
-// import ExpenseForm from "../expense_form/expense_form";
 
 class CompanyTable extends React.Component {
   constructor(props) {
