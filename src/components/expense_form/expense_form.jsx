@@ -52,7 +52,10 @@ class ExpenseForm extends React.Component {
   }
 
   handleInput(key, e) {
-    this.setState({ [key]: e.target.value });
+    let value = e.target.value;
+    if (key === "cost") value = parseInt(value);
+    
+    this.setState({ [key]: value });
   }
 
   render() {

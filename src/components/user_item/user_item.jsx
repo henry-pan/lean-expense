@@ -28,11 +28,21 @@ class UserItem extends React.Component {
     this.setState({editing: false});
   }
 
+  calcExpenses() {
+    const expensesArr = [...this.props.user.expensesSet];
+    let totalExpense = 0;
+    expensesArr.forEach(expense => {
+      totalExpense += this.props.expenses[expense].cost;
+    })
+    return totalExpense;
+  }
+
   render() {
-    const {firstName, lastName} = this.props.user;
+    const {firstName, lastName, expensesSet} = this.props.user;
     return (
       <div className="item">
         <p>{firstName} {lastName}</p>
+        <p>Total Expenses: ${this.calcExpenses()}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
         {this.state.editing && 
