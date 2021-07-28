@@ -49,12 +49,12 @@ button:hover {
   justify-content: space-between;
 }
 
-.users-section {
+.ui-section {
   width: 30%;
   padding: 20px 20px;
 }
 
-.users-table {
+.ui-table {
   border: 1px solid #f0f0f0;
   padding: 5px 5px;
   height: 500px;
@@ -75,11 +75,6 @@ button:hover {
 .item:hover {
   background-color: #e0e0e0;
   border-color: #d9d9d9;
-}
-
-.expense-section {
-  width: 30%;
-  padding: 20px 20px;
 }
 
 .company-section {

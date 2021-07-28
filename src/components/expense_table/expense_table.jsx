@@ -19,10 +19,13 @@ class ExpenseTable extends React.Component {
     });
 
     return (
-      <div className="table">
-        {expensesList}
+      <section className="ui-section">
+        <h2>Expenses</h2>
+        <div className="ui-table">
+          {expensesList}
+        </div>
         {usersArr.length !== 0 && <ExpenseForm receiveExpense={this.props.receiveExpense} users={usersArr}/>}
-      </div>
+      </section>
     );
   }
 

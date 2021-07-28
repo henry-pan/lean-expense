@@ -16,10 +16,7 @@ class App extends React.Component {
         </header>
         <div className="content">
           <UserTableContainer />
-          <section className="expense-section">
-            <h2>Expenses</h2>
-            <ExpenseTableContainer />
-          </section>
+          <ExpenseTableContainer />
           <section className="company-section">
             <h2>Company Expenses</h2>
             <CompanyTableContainer />

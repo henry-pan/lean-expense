@@ -52,7 +52,7 @@ class UserForm extends React.Component {
 
   render() {
     const {firstName, lastName, errors} = this.state;
-    const mode = this.props.user ? "Edit" : "Add";
+    const mode = this.props.user ? "Save" : "Add User";
 
     return (
       <div className="form">
@@ -65,7 +65,7 @@ class UserForm extends React.Component {
             Last Name:
             <input type= "text" onChange={e =>this.handleInput("lastName", e)} value={lastName} />
           </label>
-          <button>{mode} User</button>
+          <button>{mode}</button>
           {errors}
         </form>
       </div>

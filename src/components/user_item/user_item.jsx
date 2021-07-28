@@ -40,14 +40,22 @@ class UserItem extends React.Component {
 
   render() {
     const {firstName, lastName} = this.props.user;
-    return (
-      <div className="item">
+
+    let item;
+    if (this.state.editing) {
+      item = <UserForm receiveUser={this.props.receiveUser} user={this.props.user} closeEdit={this.closeEdit}/>;
+    } else {
+      item = <>
         <p>{firstName} {lastName}</p>
         <p>Total Expenses: ${this.calcExpenses()}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
-        {this.state.editing && 
-        <UserForm receiveUser={this.props.receiveUser} user={this.props.user} closeEdit={this.closeEdit}/>}
+      </>;
+    }
+
+    return (
+      <div className="item">
+        {item}
       </div>
     );
   }

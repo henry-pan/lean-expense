@@ -19,9 +19,9 @@ class UserTable extends React.Component {
     });
 
     return (
-      <section className="users-section">
+      <section className="ui-section">
         <h2>Users</h2>
-        <div className="users-table">
+        <div className="ui-table">
           {usersList}
         </div>
         <UserForm receiveUser={this.props.receiveUser}/>
