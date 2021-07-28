@@ -589,7 +589,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           return _this2.handleInput("category", e);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select a category"), categories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Cost:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
+        type: "number",
         onChange: function onChange(e) {
           return _this2.handleInput("cost", e);
         },

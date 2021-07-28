@@ -104,7 +104,7 @@ class ExpenseForm extends React.Component {
           </label>
           <label>
             Cost:
-            <input type="text" onChange={e =>this.handleInput("cost", e)} value={cost} />
+            <input type="number" onChange={e =>this.handleInput("cost", e)} value={cost} />
           </label>
           <label>
             Date:
