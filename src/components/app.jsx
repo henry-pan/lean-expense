@@ -1,6 +1,6 @@
 import React from "react";
-import Table from "./table";
-import UserForm from "./user_form";
+import UserTableContainer from "./user_table/user_table_container";
+import UserForm from "./user_form/user_form";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +22,10 @@ class App extends React.Component {
     this.setState({ users: newState, userCounter: newId });
   }
 
+  editUser(user) {
+
+  }
+
   render() {
     console.log("app", this.state)
     return (
@@ -29,7 +33,7 @@ class App extends React.Component {
         <div className="content">
           <section className="users-section">
             <h2>Users</h2>
-            <Table users={this.state.users} />
+            <UserTableContainer />
             <UserForm addUser={this.addUser} />
           </section>
           <section className="expense-section">

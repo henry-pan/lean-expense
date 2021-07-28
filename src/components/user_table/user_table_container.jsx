@@ -1,0 +1,15 @@
+import { connect } from "react-redux";
+import { receiveUser, removeUser } from "../../actions/user_actions";
+import UserTable from "./user_table";
+
+
+const mapStateToProps = state => ({
+  users: Object.values(state.users)
+});
+
+const mapDispatchToProps = dispatch => ({
+  receiveUser: user => dispatch(receiveUser(user)),
+  removeUser: user => dispatch(removeUser(user))
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserTable);

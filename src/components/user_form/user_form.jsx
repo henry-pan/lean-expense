@@ -8,12 +8,14 @@ class UserForm extends React.Component {
     if (this.props.user) {
       this.state = {
         firstName: this.props.user.firstName,
-        lastName: this.props.user.lastName
+        lastName: this.props.user.lastName,
+        errors: []
       };
     } else {
       this.state = {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        errors: []
       };
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,10 +23,22 @@ class UserForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addUser(this.state);
+    const {firstName, lastName} = this.state;
+    const newErrors = [];
+    if (!firstName) newErrors.push("First name cannot be empty!");
+    if (!lastName) newErrors.push("Last name cannot be empty!");
+    if (newErrors.length === 0) {
+      if (this.props.user) {
+        this.props.editUser({})
+      } else {
+        this.props.addUser({ firstName, lastName });
 
-    // Clear the form after submitting.
-    this.setState({ firstName: "", lastName: "" });
+      }
+      // Reset component after submitting.
+      this.setState({ firstName: "", lastName: "", errors: [] });
+    } else {
+      this.setState({ errors: newErrors });
+    }
   }
 
   handleInput(key, e) {
@@ -32,7 +46,7 @@ class UserForm extends React.Component {
   }
 
   render() {
-    const {firstName, lastName} = this.state;
+    const {firstName, lastName, errors} = this.state;
     const mode = this.props.user ? "Edit" : "Add";
 
     return (
@@ -47,6 +61,7 @@ class UserForm extends React.Component {
             <input type= "text" onChange={e =>this.handleInput("lastName", e)} value={this.state.lastName} />
           </label>
           <button>{mode} User</button>
+          {errors}
         </form>
       </div>
     );

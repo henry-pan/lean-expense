@@ -1,6 +1,6 @@
 import React from "react";
 
-class Item extends React.Component {
+class UserItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,4 +18,4 @@ class Item extends React.Component {
 
 }
 
-export default Item;
+export default UserItem;

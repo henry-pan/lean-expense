@@ -1,14 +1,14 @@
 import React from "react";
-import Item from "./components/user_item/item";
+import UserItem from "../user_item/user_item";
 
-class Table extends React.Component {
+class UserTable extends React.Component {
   constructor(props) {
     super(props);
   }
 
   mapUsers(arr) {
     return arr.map(i =>
-      <Item user={this.props.users[i]} userId={i} key={i} />
+      <UserItem user={this.props.users[i]} userId={i} key={i} />
     );
   }
 
@@ -16,6 +16,8 @@ class Table extends React.Component {
     const { users } = this.props;
     let items;
     if (users) items = this.mapUsers(Object.keys(users));
+
+    const usersList = this.props.users
 
     return (
       <div className="table">
@@ -26,4 +28,4 @@ class Table extends React.Component {
 
 }
 
-export default Table;
+export default UserTable;
