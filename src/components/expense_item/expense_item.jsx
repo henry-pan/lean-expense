@@ -1,7 +1,7 @@
 import React from "react";
-import UserForm from "../user_form/user_form";
+import ExpenseForm from "../expense_form/expense_form";
 
-class UserItem extends React.Component {
+class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,18 +21,18 @@ class UserItem extends React.Component {
   }
 
   render() {
-    const {firstName, lastName} = this.props.user;
+    const {name, category, cost, date} = this.props.expense;
     return (
       <div className="item">
-        <p>{firstName} {lastName}</p>
+        <p>{name}</p> <p>{category}</p> <p>${cost}</p> <p>{date}</p>
         <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={() => this.props.removeUser(this.props.user)}>Delete</button>
+        <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
         {this.state.editing && 
-        <UserForm receiveUser={this.props.receiveUser} user={this.props.user} closeEdit={this.closeEdit}/>}
+        <ExpenseForm receiveExpense={this.props.receiveExpense} expense={this.props.expense} closeEdit={this.closeEdit}/>}
       </div>
     );
   }
 
 }
 
-export default UserItem;
+export default ExpenseItem;

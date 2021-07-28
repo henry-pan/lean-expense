@@ -1,5 +1,6 @@
 import React from "react";
 import UserTableContainer from "./user_table/user_table_container";
+import ExpenseTableContainer from "./expense_table/expense_table_container";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
           </section>
           <section className="expense-section">
             <h2>Expenses</h2>
+            <ExpenseTableContainer />
           </section>
           <section className="company-section">
             <h2>Company Expense</h2>

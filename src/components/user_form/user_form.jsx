@@ -33,6 +33,7 @@ class UserForm extends React.Component {
       this.props.receiveUser({ id, firstName, lastName });
       // Reset component after submitting.
       this.setState({ id: new Date().getTime(), firstName: "", lastName: "", errors: [] });
+      if (this.props.user) this.props.closeEdit();
     } else {
       this.setState({ errors: newErrors });
     }
