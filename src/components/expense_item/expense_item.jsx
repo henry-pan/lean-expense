@@ -28,7 +28,10 @@ class ExpenseItem extends React.Component {
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
         {this.state.editing && 
-        <ExpenseForm receiveExpense={this.props.receiveExpense} expense={this.props.expense} closeEdit={this.closeEdit}/>}
+        <ExpenseForm receiveExpense={this.props.receiveExpense}
+          expense={this.props.expense}
+          closeEdit={this.closeEdit}
+          users={this.props.users}/>}
       </div>
     );
   }
