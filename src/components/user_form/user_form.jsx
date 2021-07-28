@@ -7,12 +7,14 @@ class UserForm extends React.Component {
     // If editing, prefill the forms.
     if (this.props.user) {
       this.state = {
+        id: this.props.user.id,
         firstName: this.props.user.firstName,
         lastName: this.props.user.lastName,
         errors: []
       };
     } else {
       this.state = {
+        id: new Date().getTime(),
         firstName: "",
         lastName: "",
         errors: []
@@ -23,19 +25,14 @@ class UserForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {firstName, lastName} = this.state;
+    const {id, firstName, lastName} = this.state;
     const newErrors = [];
     if (!firstName) newErrors.push("First name cannot be empty!");
     if (!lastName) newErrors.push("Last name cannot be empty!");
     if (newErrors.length === 0) {
-      if (this.props.user) {
-        this.props.editUser({})
-      } else {
-        this.props.addUser({ firstName, lastName });
-
-      }
+      this.props.receiveUser({ id, firstName, lastName });
       // Reset component after submitting.
-      this.setState({ firstName: "", lastName: "", errors: [] });
+      this.setState({ id: new Date().getTime(), firstName: "", lastName: "", errors: [] });
     } else {
       this.setState({ errors: newErrors });
     }
@@ -54,11 +51,11 @@ class UserForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             First Name:
-            <input type="text" onChange={e =>this.handleInput("firstName", e)} value={this.state.firstName} />
+            <input type="text" onChange={e =>this.handleInput("firstName", e)} value={firstName} />
           </label>
           <label>
             Last Name:
-            <input type= "text" onChange={e =>this.handleInput("lastName", e)} value={this.state.lastName} />
+            <input type= "text" onChange={e =>this.handleInput("lastName", e)} value={lastName} />
           </label>
           <button>{mode} User</button>
           {errors}
