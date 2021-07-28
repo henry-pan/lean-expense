@@ -6,10 +6,20 @@ class Table extends React.Component {
     super(props);
   }
 
+  mapUsers(arr) {
+    return arr.map(i =>
+      <Item user={this.props.users[i]} key={i} />
+    );
+  }
+
   render() {
+    const { users } = this.props;
+    let items;
+    if (users) items = this.mapUsers(Object.keys(users));
+
     return (
       <div className="table">
-        <Item />
+        {items}
       </div>
     );
   }
