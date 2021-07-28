@@ -1,3 +1,89 @@
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: #70797b;
+  color: #4d4d4d;
+}
+
+header {
+  background-color: #58595b;
+  border-bottom: 2px solid #c2e320;
+  color: #fff;
+  height: 60px;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+h1 {
+  font-size: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 7px;
+}
+
+h2 {
+  color: #2db670;
+  font-size: 36px;
+}
+
+button {
+  border-radius: 1000px;
+  color: #fff;
+  border: 1px solid #2db670;
+  background-color: #2db670;
+  transition: background-color .25s, border .25s;
+  font-size: 16px;
+  padding: 10px 40px;
+}
+
+button:hover {
+  background-color: #81d3a9;
+  border-color: #81d3a9;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: calc(100vh - 60px);
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-section {
+  width: 30%;
+  padding: 20px 20px;
+}
+
+.users-table {
+  border: 1px solid #f0f0f0;
+  padding: 5px 5px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.item {
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.item:hover {
+  background-color: #e0e0e0;
+  border-color: #d9d9d9;
+}
+
+.expense-section {
+  width: 30%;
+  padding: 20px 20px;
+}
+
+.company-section {
+  width: 30%;
+  padding: 20px 20px;
+  background-color: #d6d6d6;
 }

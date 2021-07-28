@@ -55,7 +55,7 @@ class UserForm extends React.Component {
     const mode = this.props.user ? "Edit" : "Add";
 
     return (
-      <div className="item">
+      <div className="form">
         <form onSubmit={this.handleSubmit}>
           <label>
             First Name:

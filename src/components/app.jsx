@@ -11,11 +11,11 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <header>
+          <h1>LeanExpense</h1>
+        </header>
         <div className="content">
-          <section className="users-section">
-            <h2>Users</h2>
-            <UserTableContainer />
-          </section>
+          <UserTableContainer />
           <section className="expense-section">
             <h2>Expenses</h2>
             <ExpenseTableContainer />
