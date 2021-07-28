@@ -1474,6 +1474,11 @@ var usersReducer = function usersReducer() {
       delete nextState[action.user.id];
       return nextState;
 
+    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_1__.REMOVE_EXP:
+      // Remove from user's set
+      nextState[action.expense.userId]["expensesSet"]["delete"](action.expense.id);
+      return nextState;
+
     default:
       return state;
   }
