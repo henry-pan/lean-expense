@@ -20,7 +20,7 @@ class ExpenseForm extends React.Component {
         id: new Date().getTime(),
         userId: 0,
         category: "",
-        cost: 0,
+        cost: "",
         date: "",
         errors: []
       };
@@ -32,17 +32,20 @@ class ExpenseForm extends React.Component {
     e.preventDefault();
     const {id, userId, category, cost, date} = this.state;
     const newErrors = [];
+
+    const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
+
     if (!userId) newErrors.push("Please select a user!");
     if (!category) newErrors.push("Please select a category!");
-    if (isNaN(cost)) newErrors.push("Cost must be numerical!");
+    if (isNaN(parsedCost)) newErrors.push("Cost must be numerical!");
     if (!date) newErrors.push("Please enter a date!");
     if (newErrors.length === 0) {
       if (this.props.expense) {
         const prevId = this.state.prevId;
-        this.props.receiveExpense({ id, userId, prevId, category, cost, date });
+        this.props.receiveExpense({ id, userId, prevId, category, cost: parsedCost, date });
 
       } else {
-        this.props.receiveExpense({ id, userId, category, cost, date });
+        this.props.receiveExpense({ id, userId, category, cost: parsedCost, date });
 
       }
       // Reset component after submitting.
@@ -50,7 +53,7 @@ class ExpenseForm extends React.Component {
         id: new Date().getTime(),
         userId: 0,
         category: "",
-        cost: 0,
+        cost: "",
         date: "",
         errors: [] });
         if (this.props.expense) this.props.closeEdit();
@@ -60,10 +63,11 @@ class ExpenseForm extends React.Component {
   }
 
   handleInput(key, e) {
-    let value = e.target.value;
-    if (key === "cost") value = parseInt(value);
+    // let value = e.target.value;
+    // Parse and clamp cost at 9.9bil
+    // if (key === "cost") value = Math.max(0, Math.min(parseFloat(value), 9999999999));
     
-    this.setState({ [key]: value });
+    this.setState({ [key]: e.target.value });
   }
 
   render() {
@@ -78,8 +82,8 @@ class ExpenseForm extends React.Component {
     const categories = ["Food", "Travel", "Health", "Supplies"].map(cat => <option value={cat} key={cat}>{cat}</option>);
 
     return (
-      <div className="item">
-        <form onSubmit={this.handleSubmit}>
+      <div className="expense-form-container">
+        <form className="expense-form" onSubmit={this.handleSubmit}>
           <label>
             Name:
             <select value={userId} onChange={e=>this.handleInput("userId", e)}>

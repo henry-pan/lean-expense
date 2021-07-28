@@ -35,7 +35,7 @@ class UserItem extends React.Component {
       if (!this.props.expenses[expense]) return;
       totalExpense += this.props.expenses[expense].cost;
     })
-    return totalExpense;
+    return totalExpense.toFixed(2);
   }
 
   render() {

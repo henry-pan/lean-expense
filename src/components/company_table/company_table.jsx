@@ -16,12 +16,12 @@ class CompanyTable extends React.Component {
     const {Food, Travel, Health, Supplies} = expenseObj;
 
     return (
-      <div className="table">
-        <h3>Food ${Food}</h3>
-        <h3>Travel ${Travel}</h3>
-        <h3>Health ${Health}</h3>
-        <h3>Supplies ${Supplies}</h3>
-        <h3>Total ${Food + Travel + Health + Supplies}</h3>
+      <div className="company-table">
+        <h3>Food <span>${Food.toFixed(2)}</span></h3>
+        <h3>Travel <span>${Travel.toFixed(2)}</span></h3>
+        <h3>Health <span>${Health.toFixed(2)}</span></h3>
+        <h3>Supplies <span>${Supplies.toFixed(2)}</span></h3>
+        <h3>Total <span>${(Food + Travel + Health + Supplies).toFixed(2)}</span></h3>
       </div>
     );
   }

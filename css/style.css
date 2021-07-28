@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #70797b;
@@ -23,6 +27,14 @@ h1 {
 h2 {
   color: #2db670;
   font-size: 36px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 button {
@@ -39,6 +51,35 @@ button:hover {
   background-color: #81d3a9;
   border-color: #81d3a9;
 }
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input {
+  box-sizing: border-box;
+  border-radius: 1000px;
+  transition: border .25s;
+  border: 3px solid #f0f0f0;
+  padding-left: 10px;
+  height: 30px;
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+input:focus {
+  border: 3px solid #2db670;
+}
+
+select {
+  padding-left: 10px;
+  height: 30px;
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
 
 .content {
   margin: 0 auto;
@@ -59,6 +100,34 @@ button:hover {
   padding: 5px 5px;
   height: 500px;
   overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user-form-container {
+  padding: 0 5px;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-form-input-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 5px;
+  height: 60px;
+}
+
+.expense-form-container {
+  padding: 0 5px;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
@@ -77,8 +146,18 @@ button:hover {
   border-color: #d9d9d9;
 }
 
+.expense-item {
+  display: flex;
+}
+
 .company-section {
   width: 30%;
   padding: 20px 20px;
   background-color: #d6d6d6;
+}
+
+.company-table h3:last-child {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+  font-size: 32px;
 }

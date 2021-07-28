@@ -27,16 +27,30 @@ class ExpenseItem extends React.Component {
 
     if (!users[userId]) return null;
 
-    return (
-      <div className="item">
-        <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p> <p>{category}</p> <p>${cost}</p> <p>{date}</p>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
-        {this.state.editing && 
+    let item;
+    if (this.state.editing) {
+      item =
         <ExpenseForm receiveExpense={this.props.receiveExpense}
           expense={this.props.expense}
           closeEdit={this.closeEdit}
-          users={usersArr}/>}
+          users={usersArr}/>;
+    } else {
+      item = <>
+      <div className="expense-item">
+        <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
+        <p>{category}</p>
+        <p>${cost.toFixed(2)}</p>
+        <p>{date}</p>
+
+      </div>
+      <button onClick={this.handleEdit}>Edit</button>
+      <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
+      </>;
+    }
+
+    return (
+      <div className="item">
+        {item}
       </div>
     );
   }
