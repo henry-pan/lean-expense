@@ -46,7 +46,7 @@ button {
   background-color: #2db670;
   transition: background-color .25s, border .25s;
   font-size: 16px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   cursor: pointer;
 }
 
@@ -203,7 +203,7 @@ select {
 
 @media only screen and (max-width: 950px) {
   button {
-    padding: 10px 10px;
+    padding: 5px 10px;
   }
 
   h3 {
@@ -217,7 +217,7 @@ select {
 
 @media only screen and (max-width: 750px) {
   button {
-    padding: 10px 20px;
+    padding: 5px 20px;
   }
 
   h3 {
