@@ -13,13 +13,13 @@ class ExpenseItem extends React.Component {
     this.closeEdit = this.closeEdit.bind(this);
   }
 
+  handleHover() {
+    this.setState({ hover: !this.state.hover });
+  }
+
   handleEdit(e) {
     e.preventDefault();
     this.setState({editing: true});
-  }
-
-  handleHover() {
-    this.setState({ hover: !this.state.hover });
   }
 
   closeEdit() {
