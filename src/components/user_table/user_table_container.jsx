@@ -4,7 +4,8 @@ import UserTable from "./user_table";
 
 
 const mapStateToProps = state => ({
-  users: Object.values(state.users)
+  users: Object.values(state.users),
+  expenses: state.expenses
 });
 
 const mapDispatchToProps = dispatch => ({

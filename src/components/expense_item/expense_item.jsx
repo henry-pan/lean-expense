@@ -21,17 +21,20 @@ class ExpenseItem extends React.Component {
   }
 
   render() {
-    const {name, category, cost, date} = this.props.expense;
+    const {userId, category, cost, date} = this.props.expense;
+    const {users} = this.props;
+    const usersArr = Object.values(users);
+
     return (
       <div className="item">
-        <p>{name}</p> <p>{category}</p> <p>${cost}</p> <p>{date}</p>
+        <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p> <p>{category}</p> <p>${cost}</p> <p>{date}</p>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
         {this.state.editing && 
         <ExpenseForm receiveExpense={this.props.receiveExpense}
           expense={this.props.expense}
           closeEdit={this.closeEdit}
-          users={this.props.users}/>}
+          users={usersArr}/>}
       </div>
     );
   }

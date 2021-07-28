@@ -9,7 +9,6 @@ class ExpenseForm extends React.Component {
       this.state = {
         id: this.props.expense.id,
         userId: this.props.expense.userId,
-        name: this.props.expense.name,
         category: this.props.expense.category,
         cost: this.props.expense.cost,
         date: this.props.expense.date,
@@ -19,7 +18,6 @@ class ExpenseForm extends React.Component {
       this.state = {
         id: new Date().getTime(),
         userId: 0,
-        name: "",
         category: "",
         cost: 0,
         date: "",
@@ -31,19 +29,18 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {id, name, category, cost, date} = this.state;
+    const {id, userId, category, cost, date} = this.state;
     const newErrors = [];
-    if (!name) newErrors.push("Please select a user!");
+    if (!userId) newErrors.push("Please select a user!");
     if (!category) newErrors.push("Please select a category!");
     if (isNaN(cost)) newErrors.push("Cost must be numerical!");
     if (!date) newErrors.push("Please enter a date!");
     if (newErrors.length === 0) {
-      this.props.receiveExpense({ id, name, category, cost, date });
+      this.props.receiveExpense({ id, userId, category, cost, date });
       // Reset component after submitting.
       this.setState({ 
         id: new Date().getTime(),
         userId: 0,
-        name: "",
         category: "",
         cost: 0,
         date: "",
@@ -59,12 +56,12 @@ class ExpenseForm extends React.Component {
   }
 
   render() {
-    const {name, category, cost, date, errors} = this.state;
+    const {name, userId, category, cost, date, errors} = this.state;
     const mode = this.props.expense ? "Edit" : "Add";
 
     let userList;
     if (this.props.users) {
-      userList = this.props.users.map(user => <option value={`${user.firstName} ${user.lastName}`} key={user.id}>{`${user.firstName} ${user.lastName}`}</option>);
+      userList = this.props.users.map(user => <option value={user.id} key={user.id}>{`${user.firstName} ${user.lastName}`}</option>);
     }
 
     const categories = ["Food", "Travel", "Health", "Supplies"].map(cat => <option value={cat} key={cat}>{cat}</option>);
@@ -74,7 +71,7 @@ class ExpenseForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <select value={name} onChange={e=>this.handleInput("name", e)}>
+            <select value={userId} onChange={e=>this.handleInput("userId", e)}>
               <option>Select a user</option>
               {userList}
             </select>

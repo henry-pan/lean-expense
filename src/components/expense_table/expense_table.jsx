@@ -9,18 +9,19 @@ class ExpenseTable extends React.Component {
 
   render() {
     const { users, expenses, receiveExpense, removeExpense } = this.props;
+    const usersArr = Object.values(users);
 
     const expensesList = expenses.map((expense, i) => {
       return <ExpenseItem expense={expense} key={i}
         receiveExpense={receiveExpense}
         removeExpense={removeExpense}
         users={users} />
-    })
+    });
 
     return (
       <div className="table">
         {expensesList}
-        {users.length !== 0 && <ExpenseForm receiveExpense={this.props.receiveExpense} users={users}/>}
+        {usersArr.length !== 0 && <ExpenseForm receiveExpense={this.props.receiveExpense} users={usersArr}/>}
       </div>
     );
   }

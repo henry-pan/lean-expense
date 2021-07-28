@@ -14,7 +14,7 @@ class UserTable extends React.Component {
       return <UserItem user={user} key={i}
         receiveUser={receiveUser}
         removeUser={removeUser} />
-    })
+    });
 
     return (
       <div className="table">
