@@ -16,7 +16,12 @@ const usersReducer = (state = {}, action) => {
       nextState[action.user.id] = action.user;
       return nextState;
     case RECEIVE_EXP:
-      nextState[action.expense.userId]["expenseArr"].push(action.expense.id);
+      // Remove from previous user's set
+      console.log("id", action.expense.id);
+      // const prevUser = state[action.expense.id];
+      console.log("prevState", state);
+      // nextState[prevUser]["expensesSet"].delete(action.expense.id);
+      nextState[action.expense.userId]["expensesSet"].add(action.expense.id);
       return nextState;
     case REMOVE_USER:
       delete nextState[action.user.id];

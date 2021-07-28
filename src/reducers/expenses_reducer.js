@@ -13,8 +13,6 @@ const expensesReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_EXP:
       nextState[action.expense.id] = action.expense;
-      console.log(nextState);
-      // nextState[parseInt(action.expense.userId)]["expensesArr"].push(action.expense.id);
       return nextState;
     case REMOVE_EXP:
       delete nextState[action.expense.id];

@@ -8,12 +8,14 @@ class UserTable extends React.Component {
   }
 
   render() {
-    const { users, receiveUser, removeUser } = this.props;
+    const { users, expenses, receiveUser, removeUser, removeExpense } = this.props;
 
     const usersList = users.map((user, i) => {
       return <UserItem user={user} key={i}
         receiveUser={receiveUser}
-        removeUser={removeUser} />
+        removeUser={removeUser}
+        expenses={expenses}
+        removeExpense={removeExpense} />
     });
 
     return (

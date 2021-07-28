@@ -25,6 +25,8 @@ class ExpenseItem extends React.Component {
     const {users} = this.props;
     const usersArr = Object.values(users);
 
+    if (!users[userId]) return null;
+
     return (
       <div className="item">
         <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p> <p>{category}</p> <p>${cost}</p> <p>{date}</p>

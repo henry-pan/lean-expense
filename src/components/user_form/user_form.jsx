@@ -10,7 +10,7 @@ class UserForm extends React.Component {
         id: this.props.user.id,
         firstName: this.props.user.firstName,
         lastName: this.props.user.lastName,
-        expensesArr: this.props.user.expensesArr,
+        expensesSet: this.props.user.expensesSet,
         errors: []
       };
     } else {
@@ -18,7 +18,7 @@ class UserForm extends React.Component {
         id: new Date().getTime(),
         firstName: "",
         lastName: "",
-        expensesArr: [],
+        expensesSet: new Set(),
         errors: []
       };
     }
@@ -27,18 +27,18 @@ class UserForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {id, firstName, lastName, expensesArr} = this.state;
+    const {id, firstName, lastName, expensesSet} = this.state;
     const newErrors = [];
     if (!firstName) newErrors.push("First name cannot be empty!");
     if (!lastName) newErrors.push("Last name cannot be empty!");
     if (newErrors.length === 0) {
-      this.props.receiveUser({ id, firstName, lastName, expensesArr });
+      this.props.receiveUser({ id, firstName, lastName, expensesSet });
       // Reset component after submitting.
       this.setState({ 
         id: new Date().getTime(),
         firstName: "",
         lastName: "", 
-        expensesArr: [],
+        expensesSet: new Set(),
         errors: [] });
       if (this.props.user) this.props.closeEdit();
     } else {
