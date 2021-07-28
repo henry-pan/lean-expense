@@ -1,5 +1,6 @@
 * {
   outline: none;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -168,6 +169,10 @@ select {
   flex-direction: column;
 }
 
+.item + .buttons-container {
+  margin-top: 5px;
+}
+
 .item-row {
   display: flex;
   justify-content: space-between;
@@ -176,10 +181,6 @@ select {
 
 .item-row:last-child {
   margin-bottom: 0px;
-}
-
-.item + .buttons-container {
-  margin-top: 5px;
 }
 
 .company-section {

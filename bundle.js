@@ -458,8 +458,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         category: _this.props.expense.category,
         cost: _this.props.expense.cost,
         date: _this.props.expense.date,
-        prevId: _this.props.expense.userId,
-        errors: []
+        prevId: _this.props.expense.userId
       };
     } else {
       _this.state = {
@@ -467,8 +466,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         userId: 0,
         category: "",
         cost: "",
-        date: "",
-        errors: []
+        date: ""
       };
     }
 
@@ -486,56 +484,52 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           category = _this$state.category,
           cost = _this$state.cost,
           date = _this$state.date;
-      var newErrors = [];
-      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
-      if (!userId) newErrors.push("Please select a user!");
-      if (!category) newErrors.push("Please select a category!");
-      if (isNaN(parsedCost)) newErrors.push("Cost must be numerical!");
-      if (!date) newErrors.push("Please enter a date!");
+      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999)); // Validations
 
-      if (newErrors.length === 0) {
-        if (this.props.expense) {
-          var prevId = this.state.prevId;
-          this.props.receiveExpense({
-            id: id,
-            userId: userId,
-            prevId: prevId,
-            category: category,
-            cost: parsedCost,
-            date: date
-          });
-        } else {
-          this.props.receiveExpense({
-            id: id,
-            userId: userId,
-            category: category,
-            cost: parsedCost,
-            date: date
-          });
-        } // Reset component after submitting.
+      var errors = [];
+      if (!userId) errors.push("Please select a user!");
+      if (!category) errors.push("Please select a category!");
+      if (isNaN(parsedCost)) errors.push("Cost must be numerical!");
+      if (!date) errors.push("Please enter a date!");
 
-
-        this.setState({
-          id: new Date().getTime(),
-          userId: 0,
-          category: "",
-          cost: "",
-          date: "",
-          errors: []
-        });
-        if (this.props.expense) this.props.closeEdit();
-      } else {
-        this.setState({
-          errors: newErrors
-        });
+      if (errors.length !== 0) {
+        alert(errors.join("\n"));
+        return;
       }
+
+      if (this.props.expense) {
+        var prevId = this.state.prevId;
+        this.props.receiveExpense({
+          id: id,
+          userId: userId,
+          prevId: prevId,
+          category: category,
+          cost: parsedCost,
+          date: date
+        });
+      } else {
+        this.props.receiveExpense({
+          id: id,
+          userId: userId,
+          category: category,
+          cost: parsedCost,
+          date: date
+        });
+      } // Reset component after submitting.
+
+
+      this.setState({
+        id: new Date().getTime(),
+        userId: 0,
+        category: "",
+        cost: "",
+        date: ""
+      });
+      if (this.props.expense) this.props.closeEdit();
     }
   }, {
     key: "handleInput",
     value: function handleInput(key, e) {
-      // let value = e.target.value;
-      // Parse and clamp cost at 9.9bil
-      // if (key === "cost") value = Math.max(0, Math.min(parseFloat(value), 9999999999));
       this.setState(_defineProperty({}, key, e.target.value));
     }
   }, {
@@ -544,12 +538,10 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var _this$state2 = this.state,
-          name = _this$state2.name,
           userId = _this$state2.userId,
           category = _this$state2.category,
           cost = _this$state2.cost,
-          date = _this$state2.date,
-          errors = _this$state2.errors;
+          date = _this$state2.date;
       var mode = this.props.expense ? "Save" : "Add Expense";
       var userList;
 
@@ -610,7 +602,7 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         value: date
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "buttons-container"
-      }, buttons), errors));
+      }, buttons)));
     }
   }]);
 
@@ -968,16 +960,14 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         id: _this.props.user.id,
         firstName: _this.props.user.firstName,
         lastName: _this.props.user.lastName,
-        expensesSet: _this.props.user.expensesSet,
-        errors: []
+        expensesSet: _this.props.user.expensesSet
       };
     } else {
       _this.state = {
         id: new Date().getTime(),
         firstName: "",
         lastName: "",
-        expensesSet: new Set(),
-        errors: []
+        expensesSet: new Set()
       };
     }
 
@@ -990,35 +980,27 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var _this$state = this.state,
-          id = _this$state.id,
           firstName = _this$state.firstName,
-          lastName = _this$state.lastName,
-          expensesSet = _this$state.expensesSet;
-      var newErrors = [];
-      if (!firstName) newErrors.push("First name cannot be empty!");
-      if (!lastName) newErrors.push("Last name cannot be empty!");
+          lastName = _this$state.lastName; // Validations
 
-      if (newErrors.length === 0) {
-        this.props.receiveUser({
-          id: id,
-          firstName: firstName,
-          lastName: lastName,
-          expensesSet: expensesSet
-        }); // Reset component after submitting.
+      var errors = [];
+      if (!firstName) errors.push("Please enter a first name.");
+      if (!lastName) errors.push("Please enter a last name.");
 
-        this.setState({
-          id: new Date().getTime(),
-          firstName: "",
-          lastName: "",
-          expensesSet: new Set(),
-          errors: []
-        });
-        if (this.props.user) this.props.closeEdit();
-      } else {
-        this.setState({
-          errors: newErrors
-        });
+      if (errors.length !== 0) {
+        alert(errors.join("\n"));
+        return;
       }
+
+      this.props.receiveUser(this.state); // Reset component after submitting.
+
+      this.setState({
+        id: new Date().getTime(),
+        firstName: "",
+        lastName: "",
+        expensesSet: new Set()
+      });
+      if (this.props.user) this.props.closeEdit();
     }
   }, {
     key: "handleInput",
@@ -1069,7 +1051,7 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Last Name"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "buttons-container"
-      }, buttons), errors));
+      }, buttons)));
     }
   }]);
 

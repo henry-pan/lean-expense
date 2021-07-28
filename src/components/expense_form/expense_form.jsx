@@ -12,8 +12,7 @@ class ExpenseForm extends React.Component {
         category: this.props.expense.category,
         cost: this.props.expense.cost,
         date: this.props.expense.date,
-        prevId: this.props.expense.userId,
-        errors: []
+        prevId: this.props.expense.userId
       };
     } else {
       this.state = {
@@ -21,8 +20,7 @@ class ExpenseForm extends React.Component {
         userId: 0,
         category: "",
         cost: "",
-        date: "",
-        errors: []
+        date: ""
       };
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,47 +29,43 @@ class ExpenseForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const {id, userId, category, cost, date} = this.state;
-    const newErrors = [];
 
     const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
 
-    if (!userId) newErrors.push("Please select a user!");
-    if (!category) newErrors.push("Please select a category!");
-    if (isNaN(parsedCost)) newErrors.push("Cost must be numerical!");
-    if (!date) newErrors.push("Please enter a date!");
-    if (newErrors.length === 0) {
-      if (this.props.expense) {
-        const prevId = this.state.prevId;
-        this.props.receiveExpense({ id, userId, prevId, category, cost: parsedCost, date });
-
-      } else {
-        this.props.receiveExpense({ id, userId, category, cost: parsedCost, date });
-
-      }
-      // Reset component after submitting.
-      this.setState({ 
-        id: new Date().getTime(),
-        userId: 0,
-        category: "",
-        cost: "",
-        date: "",
-        errors: [] });
-        if (this.props.expense) this.props.closeEdit();
-    } else {
-      this.setState({ errors: newErrors });
+    // Validations
+    const errors = [];
+    if (!userId) errors.push("Please select a user!");
+    if (!category) errors.push("Please select a category!");
+    if (isNaN(parsedCost)) errors.push("Cost must be numerical!");
+    if (!date) errors.push("Please enter a date!");
+    if (errors.length !== 0) {
+      alert(errors.join("\n"));
+      return;
     }
+
+    if (this.props.expense) {
+      const prevId = this.state.prevId;
+      this.props.receiveExpense({ id, userId, prevId, category, cost: parsedCost, date });
+    } else {
+      this.props.receiveExpense({ id, userId, category, cost: parsedCost, date });
+    }
+    // Reset component after submitting.
+    this.setState({ 
+      id: new Date().getTime(),
+      userId: 0,
+      category: "",
+      cost: "",
+      date: "" });
+
+    if (this.props.expense) this.props.closeEdit();
   }
 
   handleInput(key, e) {
-    // let value = e.target.value;
-    // Parse and clamp cost at 9.9bil
-    // if (key === "cost") value = Math.max(0, Math.min(parseFloat(value), 9999999999));
-    
     this.setState({ [key]: e.target.value });
   }
 
   render() {
-    const {name, userId, category, cost, date, errors} = this.state;
+    const {userId, category, cost, date} = this.state;
     const mode = this.props.expense ? "Save" : "Add Expense";
 
     let userList;
@@ -117,7 +111,6 @@ class ExpenseForm extends React.Component {
             <input type="date" onChange={e =>this.handleInput("date", e)} value={date} />
           </label>
           <div className="buttons-container">{buttons}</div>
-          {errors}
         </form>
       </div>
     );
