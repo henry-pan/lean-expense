@@ -5,8 +5,10 @@ class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+      editing: false,
+      hover: false
     }
+    this.handleHover = this.handleHover.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.closeEdit = this.closeEdit.bind(this);
   }
@@ -14,6 +16,10 @@ class ExpenseItem extends React.Component {
   handleEdit(e) {
     e.preventDefault();
     this.setState({editing: true});
+  }
+
+  handleHover() {
+    this.setState({ hover: !this.state.hover });
   }
 
   closeEdit() {
@@ -36,20 +42,27 @@ class ExpenseItem extends React.Component {
           users={usersArr}/>;
     } else {
       item = <>
-      <div className="expense-item">
-        <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
-        <p>{category}</p>
-        <p>${cost.toFixed(2)}</p>
-        <p>{date}</p>
-
-      </div>
-      <button onClick={this.handleEdit}>Edit</button>
-      <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
+        <div className="item">
+          <div className="item-row">
+            <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
+            <p>{date}</p>
+          </div>
+          <div className="item-row">
+            <p>{category}</p>
+            <p>${cost.toFixed(2)}</p>
+          </div>
+        </div>
+        {this.state.hover &&
+          <div className="buttons-container">
+            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
+          </div>
+        }
       </>;
     }
 
     return (
-      <div className="item">
+      <div className="item-container" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         {item}
       </div>
     );

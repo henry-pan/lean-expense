@@ -103,6 +103,23 @@ select {
   margin-bottom: 10px;
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: space-between;  
+  padding: 0 5px;
+}
+
+.btn-alt {
+  border: 1px solid #4d4d4d;
+  background-color: transparent;
+  color: #4d4d4d;
+}
+
+.btn-alt:hover {
+  border-color: #4d4d4d;
+  background-color: #f0f0f0;
+}
+
 .user-form-container {
   padding: 0 5px;
 }
@@ -130,24 +147,31 @@ select {
   flex-direction: column;
 }
 
-.item {
+.item-container {
   border: 1px solid #ececec;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 5px;
 }
 
-.item:last-child {
+.item-container:last-child {
   margin-bottom: 0;
 }
 
-.item:hover {
+.item-container:hover {
   background-color: #e0e0e0;
   border-color: #d9d9d9;
 }
 
-.expense-item {
+.item {
   display: flex;
+  flex-direction: column;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .company-section {

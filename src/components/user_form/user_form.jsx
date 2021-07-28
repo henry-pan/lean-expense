@@ -54,6 +54,16 @@ class UserForm extends React.Component {
     const {firstName, lastName, errors} = this.state;
     const mode = this.props.user ? "Save" : "Add User";
 
+    let buttons;
+    if (this.props.user) {
+      buttons = <>
+        <button className="btn-alt" onClick={()=>this.props.closeEdit()}>Cancel</button>
+        <button>{mode}</button>
+      </>;
+    } else {
+      buttons = <button>{mode}</button>;
+    }
+
     return (
       <div className="user-form-container">
         <form className="user-form" onSubmit={this.handleSubmit}>
@@ -65,10 +75,7 @@ class UserForm extends React.Component {
             Last Name:
             <input type= "text" onChange={e =>this.handleInput("lastName", e)} value={lastName} placeholder="Last Name" />
           </label>
-
-
-            
-          <button>{mode}</button>
+          <div className="buttons-container">{buttons}</div>
           {errors}
         </form>
       </div>

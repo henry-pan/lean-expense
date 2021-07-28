@@ -5,8 +5,10 @@ class UserItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+      editing: false,
+      hover: false
     }
+    this.handleHover = this.handleHover.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.closeEdit = this.closeEdit.bind(this);
@@ -15,6 +17,10 @@ class UserItem extends React.Component {
   handleEdit(e) {
     e.preventDefault();
     this.setState({editing: true});
+  }
+
+  handleHover() {
+    this.setState({ hover: !this.state.hover });
   }
 
   handleDelete(e) {
@@ -46,15 +52,23 @@ class UserItem extends React.Component {
       item = <UserForm receiveUser={this.props.receiveUser} user={this.props.user} closeEdit={this.closeEdit}/>;
     } else {
       item = <>
-        <p>{firstName} {lastName}</p>
-        <p>Total Expenses: ${this.calcExpenses()}</p>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleDelete}>Delete</button>
+        <div className="item">
+          <div className="item-row">
+            <p>{firstName} {lastName}</p>
+            <p>${this.calcExpenses()}</p>
+          </div>
+        </div>
+        {this.state.hover &&
+          <div className="buttons-container">
+            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={this.handleDelete}>Delete</button>
+          </div>
+        }
       </>;
     }
 
     return (
-      <div className="item">
+      <div className="item-container"  onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         {item}
       </div>
     );

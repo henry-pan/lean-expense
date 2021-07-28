@@ -72,7 +72,7 @@ class ExpenseForm extends React.Component {
 
   render() {
     const {name, userId, category, cost, date, errors} = this.state;
-    const mode = this.props.expense ? "Edit" : "Add";
+    const mode = this.props.expense ? "Save" : "Add Expense";
 
     let userList;
     if (this.props.users) {
@@ -80,6 +80,16 @@ class ExpenseForm extends React.Component {
     }
 
     const categories = ["Food", "Travel", "Health", "Supplies"].map(cat => <option value={cat} key={cat}>{cat}</option>);
+
+    let buttons;
+    if (this.props.expense) {
+      buttons = <>
+        <button className="btn-alt" onClick={()=>this.props.closeEdit()}>Cancel</button>
+        <button>{mode}</button>
+      </>;
+    } else {
+      buttons = <button>{mode}</button>;
+    }
 
     return (
       <div className="expense-form-container">
@@ -106,7 +116,7 @@ class ExpenseForm extends React.Component {
             Date:
             <input type="date" onChange={e =>this.handleInput("date", e)} value={date} />
           </label>
-          <button>{mode} Expense</button>
+          <div className="buttons-container">{buttons}</div>
           {errors}
         </form>
       </div>
