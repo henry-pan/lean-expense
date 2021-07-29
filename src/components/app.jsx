@@ -6,17 +6,32 @@ import CompanyTableContainer from "./company_table/company_table_container";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentTab: "user"
+    }
+    this.toggleUser = this.toggleUser.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
+  }
+
+  toggleUser() {
+    this.setState({currentTab: "user"});
+  }
+  toggleExpense() {
+    this.setState({currentTab: "expense"});
   }
 
   render() {
     return (
       <>
         <header>
-          <h1>LeanExpense</h1>
+          <nav>
+            <h1>LeanExpense</h1>
+            <button onClick={this.toggleUser}>Users</button>
+            <button onClick={this.toggleExpense}>Expenses</button>
+          </nav>
         </header>
         <div className="content">
-          <UserTableContainer />
-          <ExpenseTableContainer />
+          {this.state.currentTab === "user" ? <UserTableContainer /> : <ExpenseTableContainer />}
           <CompanyTableContainer />
         </div>
       </>

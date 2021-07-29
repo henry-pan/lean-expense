@@ -46,18 +46,16 @@ class ExpenseItem extends React.Component {
           <div className="item-row">
             <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
             <p>{date}</p>
-          </div>
-          <div className="item-row">
             <p>{category}</p>
             <p>${cost.toFixed(2)}</p>
           </div>
+          {this.state.hover &&
+            <div className="buttons-container">
+              <button onClick={this.handleEdit}>Edit</button>
+              <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
+            </div>
+          }
         </div>
-        {this.state.hover &&
-          <div className="buttons-container">
-            <button onClick={this.handleEdit}>Edit</button>
-            <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
-          </div>
-        }
       </>;
     }
 
