@@ -57,13 +57,13 @@ class UserItem extends React.Component {
             <p>{firstName} {lastName}</p>
             <p>${this.calcExpenses()}</p>
           </div>
+          {this.state.hover &&
+            <div className="buttons-container">
+              <button onClick={this.handleEdit}>Edit</button>
+              <button onClick={this.handleDelete}>Delete</button>
+            </div>
+          }
         </div>
-        {this.state.hover &&
-          <div className="buttons-container">
-            <button onClick={this.handleEdit}>Edit</button>
-            <button onClick={this.handleDelete}>Delete</button>
-          </div>
-        }
       </>;
     }
 
