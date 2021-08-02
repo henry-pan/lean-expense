@@ -838,6 +838,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../expense_form/expense_form */ "./src/components/expense_form/expense_form.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -868,22 +870,43 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ExpenseTable);
 
   function ExpenseTable(props) {
+    var _this;
+
     _classCallCheck(this, ExpenseTable);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      filterUser: "",
+      filterCategory: "",
+      filterDate: ""
+    };
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ExpenseTable, [{
+    key: "handleInput",
+    value: function handleInput(key, e) {
+      this.setState(_defineProperty({}, key, e.target.value));
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           users = _this$props.users,
           expenses = _this$props.expenses,
           receiveExpense = _this$props.receiveExpense,
           removeExpense = _this$props.removeExpense;
+      var _this$state = this.state,
+          filterUser = _this$state.filterUser,
+          filterCategory = _this$state.filterCategory,
+          filterDate = _this$state.filterDate;
       var usersArr = Object.values(users);
       var expensesArr = Object.values(expenses);
       var expensesList = expensesArr.map(function (expense, i) {
+        if (filterUser && filterUser != expense.userId) return;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           expense: expense,
           key: i,
@@ -892,9 +915,24 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
           users: users
         });
       });
+      var userListOptions = usersArr.map(function (user) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          value: user.id,
+          key: user.id
+        }, "".concat(user.firstName, " ").concat(user.lastName));
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
         className: "ui-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "filter-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        value: filterUser,
+        onChange: function onChange(e) {
+          return _this2.handleInput("filterUser", e);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "All Users"), userListOptions)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "ui-table"
       }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
         receiveExpense: this.props.receiveExpense,
