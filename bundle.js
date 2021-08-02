@@ -879,14 +879,23 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
       filterUser: "",
       filterCategory: ["all"],
       filterDateStart: "",
-      filterDateEnd: ""
+      filterDateEnd: "",
+      showFilters: false
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     _this.handleCategory = _this.handleCategory.bind(_assertThisInitialized(_this));
+    _this.toggleFilterDisplay = _this.toggleFilterDisplay.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ExpenseTable, [{
+    key: "toggleFilterDisplay",
+    value: function toggleFilterDisplay() {
+      this.setState({
+        showFilters: !this.state.showFilters
+      });
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(key, e) {
       this.setState(_defineProperty({}, key, e.target.value));
@@ -914,7 +923,8 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
           filterUser = _this$state.filterUser,
           filterCategory = _this$state.filterCategory,
           filterDateStart = _this$state.filterDateStart,
-          filterDateEnd = _this$state.filterDateEnd;
+          filterDateEnd = _this$state.filterDateEnd,
+          showFilters = _this$state.showFilters;
       var usersArr = Object.values(users);
       var expensesArr = Object.values(expenses);
       var expensesList = expensesArr.map(function (expense, i) {
@@ -944,8 +954,14 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
         className: "ui-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "filter-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "expenses-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.toggleFilterDisplay
+      }, showFilters ? "Hide" : "Show", " Filters")), showFilters && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "filter-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Filter By"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "filter-options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         value: filterUser,
         onChange: function onChange(e) {
@@ -960,7 +976,9 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleCategory
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "all"
-      }, "All Categories"), categoriesOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Start Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "All Categories"), categoriesOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "filter-date"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Start Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "date",
         value: filterDateStart,
         onChange: function onChange(e) {
@@ -972,7 +990,7 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this2.handleInput("filterDateEnd", e);
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "ui-table"
       }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
         receiveExpense: this.props.receiveExpense,

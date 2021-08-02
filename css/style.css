@@ -43,7 +43,7 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -114,7 +114,8 @@ select {
 .ui-table {
   border: 1px solid #f0f0f0;
   padding: 5px 5px;
-  height: calc(75vh - 200px);
+  height: calc(75vh - 270px);
+  border-radius: 5px;
   overflow-y: auto;
   margin-bottom: 10px;
 }
@@ -170,6 +171,7 @@ select {
   padding: 5px;
   margin-bottom: 5px;
   min-height: 32px;
+  transition: background-color .25s, border .25s;
 }
 
 .item-container:last-child {
@@ -187,10 +189,6 @@ select {
   align-items: center;
 }
 
-/* .item + .buttons-container {
-  margin-top: 5px;
-} */
-
 .item-row {
   display: flex;
   justify-content: space-between;
@@ -207,7 +205,46 @@ select {
 .company-table h3:last-child {
   border-top: 1px solid #f0f0f0;
   padding-top: 10px;
-  font-size: 32px;
+  font-size: 24px;
+}
+
+.expenses-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expenses-header button {
+  height: 32px;
+}
+
+.filter-box {
+  display: flex;
+  border: 1px solid #f0f0f0;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.filter-options {
+  display: flex;
+  flex-grow: 1;
+  height: 70px;
+}
+
+.filter-category {
+  height: 100%;
+}
+
+.filter-date {
+  width: 220px;
+  margin-left: 10px;
+}
+.filter-date label{
+  justify-content: space-between;
+}
+.filter-date input {
+  width: 125px;
+  flex-grow: 0;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -216,11 +253,11 @@ select {
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   .company-table h3:last-child {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
@@ -234,7 +271,7 @@ select {
   }
 
   h3 {
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -243,7 +280,7 @@ select {
   .company-table h3:last-child {
     border-top: 1px solid #f0f0f0;
     padding-top: 10px;
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .content {
@@ -260,8 +297,4 @@ select {
     width: 100%;
     padding-bottom: 40px;
   }
-}
-
-.filter-category {
-  height: 100px;
 }

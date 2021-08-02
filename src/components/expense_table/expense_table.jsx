@@ -10,9 +10,15 @@ class ExpenseTable extends React.Component {
       filterCategory: ["all"],
       filterDateStart: "",
       filterDateEnd: "",
+      showFilters: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
+    this.toggleFilterDisplay = this.toggleFilterDisplay.bind(this);
+  }
+
+  toggleFilterDisplay() {
+    this.setState({ showFilters: !this.state.showFilters });
   }
 
   handleInput(key, e) {
@@ -25,7 +31,7 @@ class ExpenseTable extends React.Component {
 
   render() {
     const { users, expenses, receiveExpense, removeExpense } = this.props;
-    const { filterUser, filterCategory, filterDateStart, filterDateEnd } = this.state;
+    const { filterUser, filterCategory, filterDateStart, filterDateEnd, showFilters } = this.state;
     const usersArr = Object.values(users);
     const expensesArr = Object.values(expenses);
 
@@ -46,25 +52,35 @@ class ExpenseTable extends React.Component {
 
     return (
       <section className="ui-section">
-        <h2>Expenses</h2>
-        <div className="filter-buttons">
-          <select value={filterUser} onChange={e=>this.handleInput("filterUser", e)}>
-            <option value="">All Users</option>
-            {userListOptions}
-          </select>
-          <select className="filter-category" multiple={true} value={filterCategory} onChange={this.handleCategory}>
-            <option value="all">All Categories</option>
-            {categoriesOptions}
-          </select>
-          <label>
-            Start Date:
-            <input type="date" value={filterDateStart} onChange={e =>this.handleInput("filterDateStart", e)}/>
-          </label>
-          <label>
-            End Date:
-            <input type="date" value={filterDateEnd} onChange={e =>this.handleInput("filterDateEnd", e)}/>
-          </label>
+        <div className="expenses-header">
+          <h2>Expenses</h2>
+          <button onClick={this.toggleFilterDisplay}>{showFilters ? "Hide" : "Show"} Filters</button>
         </div>
+        {showFilters &&
+          <div className="filter-box">
+            <h2>Filter By</h2>
+            <div className="filter-options">
+              <select value={filterUser} onChange={e=>this.handleInput("filterUser", e)}>
+                <option value="">All Users</option>
+                {userListOptions}
+              </select>
+              <select className="filter-category" multiple={true} value={filterCategory} onChange={this.handleCategory}>
+                <option value="all">All Categories</option>
+                {categoriesOptions}
+              </select>
+              <div className="filter-date">
+                <label>
+                  Start Date:
+                  <input type="date" value={filterDateStart} onChange={e =>this.handleInput("filterDateStart", e)}/>
+                </label>
+                <label>
+                  End Date:
+                  <input type="date" value={filterDateEnd} onChange={e =>this.handleInput("filterDateEnd", e)}/>
+                </label>
+              </div>
+            </div>
+          </div>
+        }
         <div className="ui-table">
           {expensesList}
         </div>
