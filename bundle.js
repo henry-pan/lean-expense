@@ -878,7 +878,8 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       filterUser: "",
       filterCategory: ["all"],
-      filterDate: ""
+      filterDateStart: "",
+      filterDateEnd: ""
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     _this.handleCategory = _this.handleCategory.bind(_assertThisInitialized(_this));
@@ -912,12 +913,15 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           filterUser = _this$state.filterUser,
           filterCategory = _this$state.filterCategory,
-          filterDate = _this$state.filterDate;
+          filterDateStart = _this$state.filterDateStart,
+          filterDateEnd = _this$state.filterDateEnd;
       var usersArr = Object.values(users);
       var expensesArr = Object.values(expenses);
       var expensesList = expensesArr.map(function (expense, i) {
+        // Apply filters - don't add to the list unless it passes the filter
         if (filterUser && filterUser != expense.userId) return;
         if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
+        if (filterDateStart && filterDateEnd && !(filterDateStart <= expense.date && filterDateEnd >= expense.date)) return;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           expense: expense,
           key: i,
@@ -956,7 +960,19 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleCategory
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "all"
-      }, "All Categories"), categoriesOptions)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "All Categories"), categoriesOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Start Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "date",
+        value: filterDateStart,
+        onChange: function onChange(e) {
+          return _this2.handleInput("filterDateStart", e);
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "End Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "date",
+        value: filterDateEnd,
+        onChange: function onChange(e) {
+          return _this2.handleInput("filterDateEnd", e);
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "ui-table"
       }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
         receiveExpense: this.props.receiveExpense,

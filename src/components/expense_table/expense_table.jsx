@@ -8,7 +8,8 @@ class ExpenseTable extends React.Component {
     this.state = {
       filterUser: "",
       filterCategory: ["all"],
-      filterDate: ""
+      filterDateStart: "",
+      filterDateEnd: "",
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
@@ -24,13 +25,16 @@ class ExpenseTable extends React.Component {
 
   render() {
     const { users, expenses, receiveExpense, removeExpense } = this.props;
-    const { filterUser, filterCategory, filterDate } = this.state;
+    const { filterUser, filterCategory, filterDateStart, filterDateEnd } = this.state;
     const usersArr = Object.values(users);
     const expensesArr = Object.values(expenses);
 
     const expensesList = expensesArr.map((expense, i) => {
+      // Apply filters - don't add to the list unless it passes the filter
       if (filterUser && filterUser != expense.userId) return;
       if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
+      if (filterDateStart && filterDateEnd && !(filterDateStart <= expense.date && filterDateEnd >= expense.date)) return;
+
       return <ExpenseItem expense={expense} key={i}
         receiveExpense={receiveExpense}
         removeExpense={removeExpense}
@@ -52,6 +56,14 @@ class ExpenseTable extends React.Component {
             <option value="all">All Categories</option>
             {categoriesOptions}
           </select>
+          <label>
+            Start Date:
+            <input type="date" value={filterDateStart} onChange={e =>this.handleInput("filterDateStart", e)}/>
+          </label>
+          <label>
+            End Date:
+            <input type="date" value={filterDateEnd} onChange={e =>this.handleInput("filterDateEnd", e)}/>
+          </label>
         </div>
         <div className="ui-table">
           {expensesList}
