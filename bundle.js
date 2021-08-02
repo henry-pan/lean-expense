@@ -554,12 +554,16 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this3.handleInput("userId", e);
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select a user"), userList)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "Select a user"), userList)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         value: category,
         onChange: function onChange(e) {
           return _this3.handleInput("category", e);
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select a category"), categories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Cost:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "Select a category"), categories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Cost:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "number",
         onChange: function onChange(e) {
           return _this3.handleInput("cost", e);
