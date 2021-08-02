@@ -46,7 +46,7 @@ class ExpenseItem extends React.Component {
           <div className="item-row">
             <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
             <p>{date}</p>
-            <p>{category}</p>
+            <p>{category[0].toUpperCase() + category.slice(1)}</p>
             <p>${cost.toFixed(2)}</p>
           </div>
           {this.state.hover &&

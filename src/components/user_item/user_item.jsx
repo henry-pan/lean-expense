@@ -40,7 +40,7 @@ class UserItem extends React.Component {
     expensesArr.forEach(expense => {
       if (!this.props.expenses[expense]) return;
       totalExpense += this.props.expenses[expense].cost;
-    })
+    });
     return totalExpense.toFixed(2);
   }
 
@@ -49,7 +49,7 @@ class UserItem extends React.Component {
 
     let item;
     if (this.state.editing) {
-      item = <UserForm receiveUser={this.props.receiveUser} user={this.props.user} closeEdit={this.closeEdit}/>;
+      item = <UserForm receiveUser={this.props.receiveUser} user={this.props.user} expenses={this.props.expenses} closeEdit={this.closeEdit}/>;
     } else {
       item = <>
         <div className="item">

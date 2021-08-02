@@ -26,6 +26,7 @@ class ExpenseForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  
   calcExpenses(user, parsedCost) {
     const expensesArr = [...user.expensesSet];
     let totalExpense = 0;
@@ -37,38 +38,39 @@ class ExpenseForm extends React.Component {
     return totalExpense.toFixed(2);
   }
 
+
   handleValidations() {
     const {userId, category, cost, date} = this.state;
-
     const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
-
-    // Validations
     const errors = [];
-    if (!userId) errors.push("Please select a user!");
-    if (!category) errors.push("Please select a category!");
-    if (isNaN(parsedCost)) errors.push("Cost must be numerical!");
-    if (!date) errors.push("Please enter a date!");
+
+    // Check all input fields for existence.
+    if (!userId) errors.push("Please select a user.");
+    if (!category) errors.push("Please select a category.");
+    if (isNaN(parsedCost)) errors.push("Please enter a cost.");
+    if (!date) errors.push("Please enter a date.");
     if (errors.length !== 0) {
       alert(errors.join("\n"));
       return false;
     }
 
+    // Check if expense exceeds user's budget.
     const user = this.props.users[userId];
     const totalCost = this.calcExpenses(user, parsedCost);
     if (user.budget < totalCost) {
-      alert("Budget exceeded!");
+      alert("This expense exceeds this user's budget!");
       return false;
     }
 
+    // All validations passed.
     return true;
   }
+
 
   handleSubmit(e) {
     e.preventDefault();
     const {id, userId, category, cost, date} = this.state;
-
     const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
-
     if (!this.handleValidations()) return;
 
     if (this.props.expense) {
@@ -77,6 +79,7 @@ class ExpenseForm extends React.Component {
     } else {
       this.props.receiveExpense({ id, userId, category, cost: parsedCost, date });
     }
+    
     // Reset component after submitting.
     this.setState({ 
       id: new Date().getTime(),
@@ -88,9 +91,11 @@ class ExpenseForm extends React.Component {
     if (this.props.expense) this.props.closeEdit();
   }
 
+
   handleInput(key, e) {
     this.setState({ [key]: e.target.value });
   }
+
 
   render() {
     const {userId, category, cost, date} = this.state;
@@ -107,10 +112,10 @@ class ExpenseForm extends React.Component {
     if (this.props.expense) {
       buttons = <>
         <button className="btn-alt" onClick={()=>this.props.closeEdit()}>Cancel</button>
-        <button>{mode}</button>
+        <button type="submit">{mode}</button>
       </>;
     } else {
-      buttons = <button>{mode}</button>;
+      buttons = <button type="submit">{mode}</button>;
     }
 
     return (

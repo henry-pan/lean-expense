@@ -529,26 +529,28 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           category = _this$state.category,
           cost = _this$state.cost,
           date = _this$state.date;
-      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999)); // Validations
+      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
+      var errors = []; // Check all input fields for existence.
 
-      var errors = [];
-      if (!userId) errors.push("Please select a user!");
-      if (!category) errors.push("Please select a category!");
-      if (isNaN(parsedCost)) errors.push("Cost must be numerical!");
-      if (!date) errors.push("Please enter a date!");
+      if (!userId) errors.push("Please select a user.");
+      if (!category) errors.push("Please select a category.");
+      if (isNaN(parsedCost)) errors.push("Please enter a cost.");
+      if (!date) errors.push("Please enter a date.");
 
       if (errors.length !== 0) {
         alert(errors.join("\n"));
         return false;
-      }
+      } // Check if expense exceeds user's budget.
+
 
       var user = this.props.users[userId];
       var totalCost = this.calcExpenses(user, parsedCost);
 
       if (user.budget < totalCost) {
-        alert("Budget exceeded!");
+        alert("This expense exceeds this user's budget!");
         return false;
-      }
+      } // All validations passed.
+
 
       return true;
     }
@@ -636,9 +638,13 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           onClick: function onClick() {
             return _this3.props.closeEdit();
           }
-        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode));
+        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode));
       } else {
-        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode);
+        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -790,7 +796,7 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
           className: "item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "item-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2))), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category[0].toUpperCase() + category.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2))), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "buttons-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           onClick: this.handleEdit
@@ -990,6 +996,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1047,27 +1065,63 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(UserForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
+    key: "calcExpenses",
+    value: function calcExpenses() {
+      var _this2 = this;
+
+      var expensesArr = _toConsumableArray(this.props.user.expensesSet);
+
+      var totalExpense = 0;
+      expensesArr.forEach(function (expense) {
+        if (!_this2.props.expenses[expense]) return;
+        totalExpense += _this2.props.expenses[expense].cost;
+      });
+      return totalExpense.toFixed(2);
+    }
+  }, {
+    key: "handleValidations",
+    value: function handleValidations() {
       var _this$state = this.state,
-          id = _this$state.id,
           firstName = _this$state.firstName,
           lastName = _this$state.lastName,
-          budget = _this$state.budget,
-          expensesSet = _this$state.expensesSet;
-      var parsedBudget = Math.max(0, Math.min(parseFloat(budget).toFixed(2), 9999999999)); // Validations
+          budget = _this$state.budget;
+      var parsedBudget = Math.max(0, Math.min(parseFloat(budget).toFixed(2), 9999999999));
+      var errors = []; // Check all input fields for existence.
 
-      var errors = [];
       if (!firstName) errors.push("Please enter a first name.");
       if (!lastName) errors.push("Please enter a last name.");
       if (isNaN(parsedBudget)) errors.push("Please enter a total budget.");
 
       if (errors.length !== 0) {
         alert(errors.join("\n"));
-        return;
-      }
+        return false;
+      } // If editing a user, check if new budget exceeds current total cost.
 
+
+      if (this.props.user) {
+        var totalCost = this.calcExpenses();
+
+        if (totalCost > parsedBudget) {
+          alert("This user's new budget cannot exceed current expenses!");
+          return false;
+        }
+      } // All validations passed.
+
+
+      return true;
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var _this$state2 = this.state,
+          id = _this$state2.id,
+          firstName = _this$state2.firstName,
+          lastName = _this$state2.lastName,
+          budget = _this$state2.budget,
+          expensesSet = _this$state2.expensesSet;
+      var parsedBudget = Math.max(0, Math.min(parseFloat(budget).toFixed(2), 9999999999));
+      if (!this.handleValidations()) return;
       this.props.receiveUser({
         id: id,
         firstName: firstName,
@@ -1093,12 +1147,12 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var _this$state2 = this.state,
-          firstName = _this$state2.firstName,
-          lastName = _this$state2.lastName,
-          budget = _this$state2.budget;
+      var _this$state3 = this.state,
+          firstName = _this$state3.firstName,
+          lastName = _this$state3.lastName,
+          budget = _this$state3.budget;
       var mode = this.props.user ? "Save" : "Add User";
       var buttons;
 
@@ -1106,11 +1160,15 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "btn-alt",
           onClick: function onClick() {
-            return _this2.props.closeEdit();
+            return _this3.props.closeEdit();
           }
-        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode));
+        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode));
       } else {
-        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode);
+        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1121,21 +1179,21 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "First Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         onChange: function onChange(e) {
-          return _this2.handleInput("firstName", e);
+          return _this3.handleInput("firstName", e);
         },
         value: firstName,
         placeholder: "First Name"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Last Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         onChange: function onChange(e) {
-          return _this2.handleInput("lastName", e);
+          return _this3.handleInput("lastName", e);
         },
         value: lastName,
         placeholder: "Last Name"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Total Budget:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "number",
         onChange: function onChange(e) {
-          return _this2.handleInput("budget", e);
+          return _this3.handleInput("budget", e);
         },
         value: budget,
         placeholder: "Total Budget"
@@ -1287,6 +1345,7 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
         item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_1__.default, {
           receiveUser: this.props.receiveUser,
           user: this.props.user,
+          expenses: this.props.expenses,
           closeEdit: this.closeEdit
         });
       } else {
