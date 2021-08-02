@@ -204,19 +204,14 @@ select {
 }
 
 .item-row p {
-  width: 15%;
+  width: 25%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.item-row p:first-child {
-  width: 30%;
-}
-
 .item-row p:last-child {
   text-align: right;
-  width: 30%;
 }
 
 .company-section {
