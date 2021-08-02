@@ -7,21 +7,24 @@ class UserItem extends React.Component {
     this.state = {
       editing: false,
       showOptions: false
-    }
+    };
     this.handleClick = this.handleClick.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.closeEdit = this.closeEdit.bind(this);
   }
 
+
   handleClick() {
     this.setState({ showOptions: !this.state.showOptions });
   }
+
 
   handleEdit(e) {
     e.preventDefault();
     this.setState({ editing: true });
   }
+
 
   handleDelete(e) {
     e.preventDefault();
@@ -30,9 +33,11 @@ class UserItem extends React.Component {
     this.props.removeUser(this.props.user);
   }
 
+
   closeEdit() {
     this.setState({ editing: false });
   }
+
 
   calcExpenses() {
     const expensesArr = [...this.props.user.expensesSet];
@@ -43,6 +48,7 @@ class UserItem extends React.Component {
     });
     return totalExpense.toFixed(2);
   }
+
 
   render() {
     const { firstName, lastName, budget } = this.props.user;
@@ -77,7 +83,6 @@ class UserItem extends React.Component {
       </div>
     );
   }
-
 }
 
 export default UserItem;

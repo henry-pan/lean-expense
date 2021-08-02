@@ -11,23 +11,27 @@ class ExpenseTable extends React.Component {
       filterDateStart: "",
       filterDateEnd: "",
       showFilters: false
-    }
+    };
     this.handleInput = this.handleInput.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.toggleFilterDisplay = this.toggleFilterDisplay.bind(this);
   }
 
+  
   toggleFilterDisplay() {
     this.setState({ showFilters: !this.state.showFilters });
   }
+
 
   handleInput(key, e) {
     this.setState({ [key]: e.target.value });
   }
 
+
   handleCategory(e) {
     this.setState({ filterCategory: Array.from(e.target.selectedOptions, option => option.value )})
   }
+
 
   render() {
     const { users, expenses, receiveExpense, removeExpense } = this.props;
@@ -39,7 +43,8 @@ class ExpenseTable extends React.Component {
       // Apply filters - don't add to the list unless it passes the filter
       if (filterUser && filterUser != expense.userId) return;
       if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
-      if (filterDateStart && filterDateEnd && !(filterDateStart <= expense.date && filterDateEnd >= expense.date)) return;
+      if (filterDateStart && !(filterDateStart <= expense.date)) return;
+      if (filterDateEnd && !(filterDateEnd >= expense.date)) return;
 
       return <ExpenseItem expense={expense} key={i}
         receiveExpense={receiveExpense}
@@ -88,7 +93,6 @@ class ExpenseTable extends React.Component {
       </section>
     );
   }
-
 }
 
 export default ExpenseTable;

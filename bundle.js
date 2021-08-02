@@ -151,22 +151,13 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_EXPS": () => (/* binding */ RECEIVE_EXPS),
 /* harmony export */   "RECEIVE_EXP": () => (/* binding */ RECEIVE_EXP),
 /* harmony export */   "REMOVE_EXP": () => (/* binding */ REMOVE_EXP),
-/* harmony export */   "receiveExpenses": () => (/* binding */ receiveExpenses),
 /* harmony export */   "receiveExpense": () => (/* binding */ receiveExpense),
 /* harmony export */   "removeExpense": () => (/* binding */ removeExpense)
 /* harmony export */ });
-var RECEIVE_EXPS = "RECEIVE_EXPS";
 var RECEIVE_EXP = "RECEIVE_EXP";
 var REMOVE_EXP = "REMOVE_EXP";
-var receiveExpenses = function receiveExpenses(expenses) {
-  return {
-    type: RECEIVE_EXPS,
-    expenses: expenses
-  };
-};
 var receiveExpense = function receiveExpense(expense) {
   return {
     type: RECEIVE_EXP,
@@ -191,22 +182,13 @@ var removeExpense = function removeExpense(expense) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_USERS": () => (/* binding */ RECEIVE_USERS),
 /* harmony export */   "RECEIVE_USER": () => (/* binding */ RECEIVE_USER),
 /* harmony export */   "REMOVE_USER": () => (/* binding */ REMOVE_USER),
-/* harmony export */   "receiveUsers": () => (/* binding */ receiveUsers),
 /* harmony export */   "receiveUser": () => (/* binding */ receiveUser),
 /* harmony export */   "removeUser": () => (/* binding */ removeUser)
 /* harmony export */ });
-var RECEIVE_USERS = "RECEIVE_USERS";
 var RECEIVE_USER = "RECEIVE_USER";
 var REMOVE_USER = "REMOVE_USER";
-var receiveUsers = function receiveUsers(users) {
-  return {
-    type: RECEIVE_USERS,
-    users: users
-  };
-};
 var receiveUser = function receiveUser(user) {
   return {
     type: RECEIVE_USER,
@@ -326,72 +308,30 @@ var App = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ CompanyTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var CompanyTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(CompanyTable, _React$Component);
-
-  var _super = _createSuper(CompanyTable);
-
-  function CompanyTable(props) {
-    _classCallCheck(this, CompanyTable);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(CompanyTable, [{
-    key: "render",
-    value: function render() {
-      var expenseObj = {
-        food: 0,
-        travel: 0,
-        health: 0,
-        supplies: 0
-      };
-      this.props.expenses.forEach(function (expense) {
-        return expenseObj[expense.category] += expense.cost;
-      });
-      var food = expenseObj.food,
-          travel = expenseObj.travel,
-          health = expenseObj.health,
-          supplies = expenseObj.supplies;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "company-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Company Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "company-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Food ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", food.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Travel ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", travel.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Health ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", health.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Supplies ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", supplies.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Total ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", (food + travel + health + supplies).toFixed(2)))));
-    }
-  }]);
-
-  return CompanyTable;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompanyTable);
+function CompanyTable(props) {
+  var expenseObj = {
+    food: 0,
+    travel: 0,
+    health: 0,
+    supplies: 0
+  };
+  props.expenses.forEach(function (expense) {
+    return expenseObj[expense.category] += expense.cost;
+  });
+  var food = expenseObj.food,
+      travel = expenseObj.travel,
+      health = expenseObj.health,
+      supplies = expenseObj.supplies;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "company-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Company Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "company-table"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Food ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", food.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Travel ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", travel.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Health ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", health.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Supplies ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", supplies.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Total ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", (food + travel + health + supplies).toFixed(2)))));
+}
 
 /***/ }),
 
@@ -929,7 +869,8 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
         // Apply filters - don't add to the list unless it passes the filter
         if (filterUser && filterUser != expense.userId) return;
         if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
-        if (filterDateStart && filterDateEnd && !(filterDateStart <= expense.date && filterDateEnd >= expense.date)) return;
+        if (filterDateStart && !(filterDateStart <= expense.date)) return;
+        if (filterDateEnd && !(filterDateEnd >= expense.date)) return;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           expense: expense,
           key: i,
@@ -1479,81 +1420,38 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ UserTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _user_item_user_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user_item/user_item */ "./src/components/user_item/user_item.jsx");
 /* harmony import */ var _user_form_user_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user_form/user_form */ "./src/components/user_form/user_form.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-
-
-var UserTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(UserTable, _React$Component);
-
-  var _super = _createSuper(UserTable);
-
-  function UserTable(props) {
-    _classCallCheck(this, UserTable);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(UserTable, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          users = _this$props.users,
-          expenses = _this$props.expenses,
-          receiveUser = _this$props.receiveUser,
-          removeUser = _this$props.removeUser,
-          removeExpense = _this$props.removeExpense;
-      var usersList = users.map(function (user, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_item_user_item__WEBPACK_IMPORTED_MODULE_1__.default, {
-          user: user,
-          key: i,
-          receiveUser: receiveUser,
-          removeUser: removeUser,
-          expenses: expenses,
-          removeExpense: removeExpense
-        });
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "ui-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "ui-table"
-      }, usersList), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_2__.default, {
-        receiveUser: this.props.receiveUser
-      }));
-    }
-  }]);
-
-  return UserTable;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserTable);
+function UserTable(props) {
+  var users = props.users,
+      expenses = props.expenses,
+      receiveUser = props.receiveUser,
+      removeUser = props.removeUser,
+      removeExpense = props.removeExpense;
+  var usersList = users.map(function (user, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_item_user_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+      user: user,
+      key: i,
+      receiveUser: receiveUser,
+      removeUser: removeUser,
+      expenses: expenses,
+      removeExpense: removeExpense
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "ui-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "ui-table"
+  }, usersList), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_2__.default, {
+    receiveUser: receiveUser
+  }));
+}
 
 /***/ }),
 
@@ -1623,13 +1521,6 @@ var expensesReducer = function expensesReducer() {
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
-    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXPS:
-      var newState = {};
-      action.expenses.forEach(function (expense) {
-        newState[expense.id] = expense;
-      });
-      return newState;
-
     case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXP:
       nextState[action.expense.id] = action.expense;
       delete nextState[action.expense.id]["prevId"];
@@ -1696,13 +1587,6 @@ var usersReducer = function usersReducer() {
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USERS:
-      var newState = {};
-      action.users.forEach(function (user) {
-        newState[user.id] = user;
-      });
-      return newState;
-
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USER:
       nextState[action.user.id] = action.user;
       return nextState;

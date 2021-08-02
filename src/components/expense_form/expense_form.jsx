@@ -148,7 +148,6 @@ class ExpenseForm extends React.Component {
       </div>
     );
   }
-
 }
 
 export default ExpenseForm;

@@ -13,12 +13,16 @@ class App extends React.Component {
     this.toggleExpense = this.toggleExpense.bind(this);
   }
 
+
   toggleUser() {
     this.setState({currentTab: "user"});
   }
+
+
   toggleExpense() {
     this.setState({currentTab: "expense"});
   }
+
 
   render() {
     return (
@@ -37,7 +41,6 @@ class App extends React.Component {
       </>
     );
   }
-
 }
 
 export default App;

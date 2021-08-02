@@ -7,24 +7,28 @@ class ExpenseItem extends React.Component {
     this.state = {
       editing: false,
       showOptions: false
-    }
+    };
     this.handleClick = this.handleClick.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.closeEdit = this.closeEdit.bind(this);
   }
 
+
   handleClick() {
     this.setState({ showOptions: !this.state.showOptions });
   }
+
 
   handleEdit(e) {
     e.preventDefault();
     this.setState({ editing: true });
   }
 
+
   closeEdit() {
     this.setState({ editing: false });
   }
+
 
   render() {
     const { userId, category, cost, date } = this.props.expense;
@@ -64,7 +68,6 @@ class ExpenseItem extends React.Component {
       </div>
     );
   }
-
 }
 
 export default ExpenseItem;
