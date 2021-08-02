@@ -3,6 +3,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+::selection {
+  background: #81d3a9;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #70797b;
@@ -126,11 +130,14 @@ select {
   padding: 0 5px;
 }
 
+.buttons-container button:last-child {
+  margin-left: 10px;
+}
+
 .btn-alt {
   border: 1px solid #4d4d4d;
   background-color: transparent;
   color: #4d4d4d;
-  margin-right: 10px;
 }
 
 .btn-alt:hover {
@@ -172,6 +179,7 @@ select {
   margin-bottom: 5px;
   min-height: 32px;
   transition: background-color .25s, border .25s;
+  cursor: pointer;
 }
 
 .item-container:last-child {
@@ -223,12 +231,13 @@ select {
   padding: 5px 5px;
   margin-bottom: 10px;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .filter-options {
   display: flex;
   flex-grow: 1;
-  height: 70px;
+  box-sizing: border-box;
 }
 
 .filter-category {
@@ -236,8 +245,9 @@ select {
 }
 
 .filter-date {
-  width: 220px;
+  max-width: 220px;
   margin-left: 10px;
+  box-sizing: border-box;
 }
 .filter-date label{
   justify-content: space-between;
@@ -247,9 +257,13 @@ select {
   flex-grow: 0;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1200px) {
   button {
     padding: 5px 10px;
+  }
+  
+  h2 {
+    font-size: 26px;
   }
 
   h3 {
@@ -262,6 +276,10 @@ select {
 }
 
 @media only screen and (max-width: 750px) {
+  header {
+    height: 50px;
+  }
+
   button {
     padding: 5px 20px;
   }
@@ -275,6 +293,10 @@ select {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
   }
 
   .company-table h3:last-child {
@@ -296,5 +318,36 @@ select {
   .company-section {
     width: 100%;
     padding-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  header {
+    height: 40px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+  
+  p {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 3px 7px;
+  }
+
+  .filter-box, .filter-options {
+    flex-direction: column;
+  }
+
+  .filter-options select:first-child {
+    margin-left: 0;
+  }
+
+  .filter-category {
+    margin-left: 0;
   }
 }

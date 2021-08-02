@@ -6,21 +6,21 @@ class UserItem extends React.Component {
     super(props);
     this.state = {
       editing: false,
-      hover: false
+      showOptions: false
     }
-    this.handleHover = this.handleHover.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.closeEdit = this.closeEdit.bind(this);
   }
 
-  handleHover() {
-    this.setState({ hover: !this.state.hover });
+  handleClick() {
+    this.setState({ showOptions: !this.state.showOptions });
   }
 
   handleEdit(e) {
     e.preventDefault();
-    this.setState({editing: true});
+    this.setState({ editing: true });
   }
 
   handleDelete(e) {
@@ -31,7 +31,7 @@ class UserItem extends React.Component {
   }
 
   closeEdit() {
-    this.setState({editing: false});
+    this.setState({ editing: false });
   }
 
   calcExpenses() {
@@ -45,11 +45,15 @@ class UserItem extends React.Component {
   }
 
   render() {
-    const {firstName, lastName, budget} = this.props.user;
+    const { firstName, lastName, budget } = this.props.user;
 
     let item;
     if (this.state.editing) {
-      item = <UserForm receiveUser={this.props.receiveUser} user={this.props.user} expenses={this.props.expenses} closeEdit={this.closeEdit}/>;
+      item =
+        <UserForm receiveUser={this.props.receiveUser}
+          user={this.props.user}
+          expenses={this.props.expenses}
+          closeEdit={this.closeEdit}/>;
     } else {
       item = <>
         <div className="item">
@@ -57,18 +61,18 @@ class UserItem extends React.Component {
             <p>{firstName} {lastName}</p>
             <p>${this.calcExpenses()} / ${budget.toFixed(2)}</p>
           </div>
-          {this.state.hover &&
-            <div className="buttons-container">
-              <button onClick={this.handleEdit}>Edit</button>
-              <button onClick={this.handleDelete}>Delete</button>
-            </div>
-          }
         </div>
+        {this.state.showOptions &&
+          <div className="buttons-container">
+            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={this.handleDelete}>Delete</button>
+          </div>
+        }
       </>;
     }
 
     return (
-      <div className="item-container"  onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+      <div className="item-container" onClick={this.handleClick}>
         {item}
       </div>
     );

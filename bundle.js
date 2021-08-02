@@ -739,19 +739,19 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       editing: false,
-      hover: false
+      showOptions: false
     };
-    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     _this.closeEdit = _this.closeEdit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ExpenseItem, [{
-    key: "handleHover",
-    value: function handleHover() {
+    key: "handleClick",
+    value: function handleClick() {
       this.setState({
-        hover: !this.state.hover
+        showOptions: !this.state.showOptions
       });
     }
   }, {
@@ -779,8 +779,7 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
           category = _this$props$expense.category,
           cost = _this$props$expense.cost,
           date = _this$props$expense.date;
-      var users = this.props.users; // const usersArr = Object.values(users);
-
+      var users = this.props.users;
       if (!users[userId]) return null;
       var item;
 
@@ -796,7 +795,7 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
           className: "item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "item-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category[0].toUpperCase() + category.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2))), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category[0].toUpperCase() + category.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2)))), this.state.showOptions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "buttons-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           onClick: this.handleEdit
@@ -804,13 +803,12 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
           onClick: function onClick() {
             return _this2.props.removeExpense(_this2.props.expense);
           }
-        }, "Delete"))));
+        }, "Delete")));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "item-container",
-        onMouseEnter: this.handleHover,
-        onMouseLeave: this.handleHover
+        onClick: this.handleClick
       }, item);
     }
   }]);
@@ -1369,9 +1367,9 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       editing: false,
-      hover: false
+      showOptions: false
     };
-    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.closeEdit = _this.closeEdit.bind(_assertThisInitialized(_this));
@@ -1379,10 +1377,10 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(UserItem, [{
-    key: "handleHover",
-    value: function handleHover() {
+    key: "handleClick",
+    value: function handleClick() {
       this.setState({
-        hover: !this.state.hover
+        showOptions: !this.state.showOptions
       });
     }
   }, {
@@ -1449,19 +1447,18 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
           className: "item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "item-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, firstName, " ", lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.calcExpenses(), " / $", budget.toFixed(2))), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, firstName, " ", lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.calcExpenses(), " / $", budget.toFixed(2)))), this.state.showOptions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "buttons-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           onClick: this.handleEdit
         }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           onClick: this.handleDelete
-        }, "Delete"))));
+        }, "Delete")));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "item-container",
-        onMouseEnter: this.handleHover,
-        onMouseLeave: this.handleHover
+        onClick: this.handleClick
       }, item);
     }
   }]);
