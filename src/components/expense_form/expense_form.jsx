@@ -124,14 +124,14 @@ class ExpenseForm extends React.Component {
           <label>
             Name:
             <select value={userId} onChange={e=>this.handleInput("userId", e)}>
-              <option>Select a user</option>
+              <option value="">Select a user</option>
               {userList}
             </select>
           </label>
           <label>
             Category:
             <select value={category} onChange={e=>this.handleInput("category", e)}>
-              <option>Select a category</option>
+              <option value="">Select a category</option>
               {categories}
             </select>
           </label>
