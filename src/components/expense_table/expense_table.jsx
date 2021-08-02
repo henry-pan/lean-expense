@@ -7,14 +7,19 @@ class ExpenseTable extends React.Component {
     super(props);
     this.state = {
       filterUser: "",
-      filterCategory: "",
+      filterCategory: ["all"],
       filterDate: ""
     }
     this.handleInput = this.handleInput.bind(this);
+    this.handleCategory = this.handleCategory.bind(this);
   }
 
   handleInput(key, e) {
     this.setState({ [key]: e.target.value });
+  }
+
+  handleCategory(e) {
+    this.setState({ filterCategory: Array.from(e.target.selectedOptions, option => option.value )})
   }
 
   render() {
@@ -25,15 +30,15 @@ class ExpenseTable extends React.Component {
 
     const expensesList = expensesArr.map((expense, i) => {
       if (filterUser && filterUser != expense.userId) return;
+      if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
       return <ExpenseItem expense={expense} key={i}
         receiveExpense={receiveExpense}
         removeExpense={removeExpense}
         users={users} />
     });
 
-
     const userListOptions = usersArr.map(user => <option value={user.id} key={user.id}>{`${user.firstName} ${user.lastName}`}</option>);
-
+    const categoriesOptions = ["food", "travel", "health", "supplies"].map(cat => <option value={cat} key={cat}>{cat[0].toUpperCase() + cat.slice(1)}</option>);
 
     return (
       <section className="ui-section">
@@ -42,6 +47,10 @@ class ExpenseTable extends React.Component {
           <select value={filterUser} onChange={e=>this.handleInput("filterUser", e)}>
             <option value="">All Users</option>
             {userListOptions}
+          </select>
+          <select className="filter-category" multiple={true} value={filterCategory} onChange={this.handleCategory}>
+            <option value="all">All Categories</option>
+            {categoriesOptions}
           </select>
         </div>
         <div className="ui-table">

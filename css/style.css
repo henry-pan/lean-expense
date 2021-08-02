@@ -261,3 +261,7 @@ select {
     padding-bottom: 40px;
   }
 }
+
+.filter-category {
+  height: 100px;
+}

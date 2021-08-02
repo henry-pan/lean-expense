@@ -877,10 +877,11 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       filterUser: "",
-      filterCategory: "",
+      filterCategory: ["all"],
       filterDate: ""
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleCategory = _this.handleCategory.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -888,6 +889,15 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
     key: "handleInput",
     value: function handleInput(key, e) {
       this.setState(_defineProperty({}, key, e.target.value));
+    }
+  }, {
+    key: "handleCategory",
+    value: function handleCategory(e) {
+      this.setState({
+        filterCategory: Array.from(e.target.selectedOptions, function (option) {
+          return option.value;
+        })
+      });
     }
   }, {
     key: "render",
@@ -907,6 +917,7 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
       var expensesArr = Object.values(expenses);
       var expensesList = expensesArr.map(function (expense, i) {
         if (filterUser && filterUser != expense.userId) return;
+        if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           expense: expense,
           key: i,
@@ -921,6 +932,12 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
           key: user.id
         }, "".concat(user.firstName, " ").concat(user.lastName));
       });
+      var categoriesOptions = ["food", "travel", "health", "supplies"].map(function (cat) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+          value: cat,
+          key: cat
+        }, cat[0].toUpperCase() + cat.slice(1));
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
         className: "ui-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -932,7 +949,14 @@ var ExpenseTable = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: ""
-      }, "All Users"), userListOptions)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "All Users"), userListOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+        className: "filter-category",
+        multiple: true,
+        value: filterCategory,
+        onChange: this.handleCategory
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "all"
+      }, "All Categories"), categoriesOptions)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "ui-table"
       }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
         receiveExpense: this.props.receiveExpense,
