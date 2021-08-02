@@ -628,6 +628,7 @@ function ExpenseItem(props) {
       toggleOptions = _useState4[1];
 
   var users = props.users,
+      expenses = props.expenses,
       expense = props.expense,
       receiveExpense = props.receiveExpense,
       removeExpense = props.removeExpense;
@@ -646,6 +647,7 @@ function ExpenseItem(props) {
   if (isEditing) {
     item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_1__.default, {
       receiveExpense: receiveExpense,
+      expenses: expenses,
       expense: expense,
       closeEdit: closeEdit,
       users: users
@@ -762,7 +764,8 @@ function ExpenseTable(props) {
       key: i,
       receiveExpense: receiveExpense,
       removeExpense: removeExpense,
-      users: users
+      users: users,
+      expenses: expenses
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {

@@ -203,6 +203,22 @@ select {
   flex-grow: 1;
 }
 
+.item-row p {
+  width: 15%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-row p:first-child {
+  width: 30%;
+}
+
+.item-row p:last-child {
+  text-align: right;
+  width: 30%;
+}
+
 .company-section {
   box-sizing: border-box;
   width: 30%;
@@ -232,6 +248,11 @@ select {
   margin-bottom: 10px;
   border-radius: 5px;
   box-sizing: border-box;
+  flex-direction: column;
+}
+
+.filter-box + .ui-table {
+  height: calc(70vh - 320px);
 }
 
 .filter-options {
@@ -245,15 +266,17 @@ select {
 }
 
 .filter-date {
-  max-width: 220px;
+  max-width: 250px;
   margin-left: 10px;
   box-sizing: border-box;
 }
+
 .filter-date label{
   justify-content: space-between;
 }
+
 .filter-date input {
-  width: 125px;
+  width: 145px;
   flex-grow: 0;
 }
 
@@ -339,7 +362,7 @@ select {
     padding: 3px 7px;
   }
 
-  .filter-box, .filter-options {
+  .filter-options {
     flex-direction: column;
   }
 

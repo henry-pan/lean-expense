@@ -26,7 +26,8 @@ export default function ExpenseTable(props) {
     return <ExpenseItem expense={expense} key={i}
       receiveExpense={receiveExpense}
       removeExpense={removeExpense}
-      users={users} />
+      users={users}
+      expenses={expenses} />
   });
 
   return (

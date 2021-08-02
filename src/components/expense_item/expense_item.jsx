@@ -5,7 +5,7 @@ export default function ExpenseItem(props) {
   const [isEditing, setEditing] = useState(false);
   const [showOptions, toggleOptions] = useState(false);
 
-  const { users, expense, receiveExpense, removeExpense } = props;
+  const { users, expenses, expense, receiveExpense, removeExpense } = props;
   const { userId, category, cost, date } = expense;
   if (!users[userId]) return null;
 
@@ -16,6 +16,7 @@ export default function ExpenseItem(props) {
   if (isEditing) {
     item =
       <ExpenseForm receiveExpense={receiveExpense}
+        expenses={expenses}
         expense={expense}
         closeEdit={closeEdit}
         users={users}/>;
