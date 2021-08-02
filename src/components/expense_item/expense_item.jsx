@@ -29,7 +29,7 @@ class ExpenseItem extends React.Component {
   render() {
     const {userId, category, cost, date} = this.props.expense;
     const {users} = this.props;
-    const usersArr = Object.values(users);
+    // const usersArr = Object.values(users);
 
     if (!users[userId]) return null;
 
@@ -39,7 +39,7 @@ class ExpenseItem extends React.Component {
         <ExpenseForm receiveExpense={this.props.receiveExpense}
           expense={this.props.expense}
           closeEdit={this.closeEdit}
-          users={usersArr}/>;
+          users={users}/>;
     } else {
       item = <>
         <div className="item">

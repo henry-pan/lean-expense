@@ -26,9 +26,19 @@ class ExpenseForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const {id, userId, category, cost, date} = this.state;
+  calcExpenses(user, parsedCost) {
+    const expensesArr = [...user.expensesSet];
+    let totalExpense = 0;
+    expensesArr.forEach(expense => {
+      if (expense === this.state.id) return;
+      totalExpense += this.props.expenses[expense].cost;
+    });
+    totalExpense += parsedCost;
+    return totalExpense.toFixed(2);
+  }
+
+  handleValidations() {
+    const {userId, category, cost, date} = this.state;
 
     const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
 
@@ -40,8 +50,26 @@ class ExpenseForm extends React.Component {
     if (!date) errors.push("Please enter a date!");
     if (errors.length !== 0) {
       alert(errors.join("\n"));
-      return;
+      return false;
     }
+
+    const user = this.props.users[userId];
+    const totalCost = this.calcExpenses(user, parsedCost);
+    if (user.budget < totalCost) {
+      alert("Budget exceeded!");
+      return false;
+    }
+
+    return true;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const {id, userId, category, cost, date} = this.state;
+
+    const parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
+
+    if (!this.handleValidations()) return;
 
     if (this.props.expense) {
       const prevId = this.state.prevId;
@@ -70,10 +98,10 @@ class ExpenseForm extends React.Component {
 
     let userList;
     if (this.props.users) {
-      userList = this.props.users.map(user => <option value={user.id} key={user.id}>{`${user.firstName} ${user.lastName}`}</option>);
+      userList = Object.values(this.props.users).map(user => <option value={user.id} key={user.id}>{`${user.firstName} ${user.lastName}`}</option>);
     }
 
-    const categories = ["Food", "Travel", "Health", "Supplies"].map(cat => <option value={cat} key={cat}>{cat}</option>);
+    const categories = ["food", "travel", "health", "supplies"].map(cat => <option value={cat} key={cat}>{cat[0].toUpperCase() + cat.slice(1)}</option>);
 
     let buttons;
     if (this.props.expense) {

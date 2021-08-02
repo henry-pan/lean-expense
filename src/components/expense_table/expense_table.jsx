@@ -10,8 +10,9 @@ class ExpenseTable extends React.Component {
   render() {
     const { users, expenses, receiveExpense, removeExpense } = this.props;
     const usersArr = Object.values(users);
+    const expensesArr = Object.values(expenses);
 
-    const expensesList = expenses.map((expense, i) => {
+    const expensesList = expensesArr.map((expense, i) => {
       return <ExpenseItem expense={expense} key={i}
         receiveExpense={receiveExpense}
         removeExpense={removeExpense}
@@ -24,7 +25,7 @@ class ExpenseTable extends React.Component {
         <div className="ui-table">
           {expensesList}
         </div>
-        {usersArr.length !== 0 && <ExpenseForm receiveExpense={this.props.receiveExpense} users={usersArr}/>}
+        {usersArr.length !== 0 && <ExpenseForm receiveExpense={this.props.receiveExpense} users={users} expenses={expenses}/>}
       </section>
     );
   }

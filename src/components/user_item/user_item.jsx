@@ -45,7 +45,7 @@ class UserItem extends React.Component {
   }
 
   render() {
-    const {firstName, lastName} = this.props.user;
+    const {firstName, lastName, budget} = this.props.user;
 
     let item;
     if (this.state.editing) {
@@ -55,7 +55,7 @@ class UserItem extends React.Component {
         <div className="item">
           <div className="item-row">
             <p>{firstName} {lastName}</p>
-            <p>${this.calcExpenses()}</p>
+            <p>${this.calcExpenses()} / ${budget.toFixed(2)}</p>
           </div>
           {this.state.hover &&
             <div className="buttons-container">
