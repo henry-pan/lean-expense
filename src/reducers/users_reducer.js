@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, RECEIVE_USER, REMOVE_USER } from "../actions/user_actions";
+import { RECEIVE_USER, REMOVE_USER } from "../actions/user_actions";
 import { RECEIVE_EXP, REMOVE_EXP } from "../actions/expense_actions";
 
 const usersReducer = (state = {}, action) => {
@@ -6,12 +6,6 @@ const usersReducer = (state = {}, action) => {
   const nextState = Object.assign({}, state);
 
   switch(action.type){
-    case RECEIVE_USERS:
-      const newState = {};
-      action.users.forEach(user => {
-        newState[user.id] = user;
-      });
-      return newState;
     case RECEIVE_USER:
       nextState[action.user.id] = action.user;
       return nextState;

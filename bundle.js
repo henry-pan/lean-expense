@@ -151,22 +151,13 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_EXPS": () => (/* binding */ RECEIVE_EXPS),
 /* harmony export */   "RECEIVE_EXP": () => (/* binding */ RECEIVE_EXP),
 /* harmony export */   "REMOVE_EXP": () => (/* binding */ REMOVE_EXP),
-/* harmony export */   "receiveExpenses": () => (/* binding */ receiveExpenses),
 /* harmony export */   "receiveExpense": () => (/* binding */ receiveExpense),
 /* harmony export */   "removeExpense": () => (/* binding */ removeExpense)
 /* harmony export */ });
-var RECEIVE_EXPS = "RECEIVE_EXPS";
 var RECEIVE_EXP = "RECEIVE_EXP";
 var REMOVE_EXP = "REMOVE_EXP";
-var receiveExpenses = function receiveExpenses(expenses) {
-  return {
-    type: RECEIVE_EXPS,
-    expenses: expenses
-  };
-};
 var receiveExpense = function receiveExpense(expense) {
   return {
     type: RECEIVE_EXP,
@@ -191,22 +182,13 @@ var removeExpense = function removeExpense(expense) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIVE_USERS": () => (/* binding */ RECEIVE_USERS),
 /* harmony export */   "RECEIVE_USER": () => (/* binding */ RECEIVE_USER),
 /* harmony export */   "REMOVE_USER": () => (/* binding */ REMOVE_USER),
-/* harmony export */   "receiveUsers": () => (/* binding */ receiveUsers),
 /* harmony export */   "receiveUser": () => (/* binding */ receiveUser),
 /* harmony export */   "removeUser": () => (/* binding */ removeUser)
 /* harmony export */ });
-var RECEIVE_USERS = "RECEIVE_USERS";
 var RECEIVE_USER = "RECEIVE_USER";
 var REMOVE_USER = "REMOVE_USER";
-var receiveUsers = function receiveUsers(users) {
-  return {
-    type: RECEIVE_USERS,
-    users: users
-  };
-};
 var receiveUser = function receiveUser(user) {
   return {
     type: RECEIVE_USER,
@@ -231,89 +213,46 @@ var removeUser = function removeUser(user) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _user_table_user_table_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_table/user_table_container */ "./src/components/user_table/user_table_container.jsx");
 /* harmony import */ var _expense_table_expense_table_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expense_table/expense_table_container */ "./src/components/expense_table/expense_table_container.jsx");
 /* harmony import */ var _company_table_company_table_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./company_table/company_table_container */ "./src/components/company_table/company_table_container.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
+function App() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("user"),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentTab = _useState2[0],
+      setCurrentTab = _useState2[1];
 
-var App = /*#__PURE__*/function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  var _super = _createSuper(App);
-
-  function App(props) {
-    var _this;
-
-    _classCallCheck(this, App);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      currentTab: "user"
-    };
-    _this.toggleUser = _this.toggleUser.bind(_assertThisInitialized(_this));
-    _this.toggleExpense = _this.toggleExpense.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: "toggleUser",
-    value: function toggleUser() {
-      this.setState({
-        currentTab: "user"
-      });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "LeanExpense"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return setCurrentTab("user");
     }
-  }, {
-    key: "toggleExpense",
-    value: function toggleExpense() {
-      this.setState({
-        currentTab: "expense"
-      });
+  }, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return setCurrentTab("expense");
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "LeanExpense"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.toggleUser
-      }, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.toggleExpense
-      }, "Expenses"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "content"
-      }, this.state.currentTab === "user" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_table_user_table_container__WEBPACK_IMPORTED_MODULE_1__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_table_expense_table_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_company_table_company_table_container__WEBPACK_IMPORTED_MODULE_3__.default, null)));
-    }
-  }]);
-
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+  }, "Expenses"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "content"
+  }, currentTab === "user" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_table_user_table_container__WEBPACK_IMPORTED_MODULE_1__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_table_expense_table_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_company_table_company_table_container__WEBPACK_IMPORTED_MODULE_3__.default, null)));
+}
 
 /***/ }),
 
@@ -326,72 +265,30 @@ var App = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ CompanyTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-var CompanyTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(CompanyTable, _React$Component);
-
-  var _super = _createSuper(CompanyTable);
-
-  function CompanyTable(props) {
-    _classCallCheck(this, CompanyTable);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(CompanyTable, [{
-    key: "render",
-    value: function render() {
-      var expenseObj = {
-        Food: 0,
-        Travel: 0,
-        Health: 0,
-        Supplies: 0
-      };
-      this.props.expenses.forEach(function (expense) {
-        return expenseObj[expense.category] += expense.cost;
-      });
-      var Food = expenseObj.Food,
-          Travel = expenseObj.Travel,
-          Health = expenseObj.Health,
-          Supplies = expenseObj.Supplies;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "company-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Company Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "company-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Food ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", Food.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Travel ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", Travel.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Health ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", Health.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Supplies ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", Supplies.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Total ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", (Food + Travel + Health + Supplies).toFixed(2)))));
-    }
-  }]);
-
-  return CompanyTable;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompanyTable);
+function CompanyTable(props) {
+  var expenseObj = {
+    food: 0,
+    travel: 0,
+    health: 0,
+    supplies: 0
+  };
+  props.expenses.forEach(function (expense) {
+    return expenseObj[expense.category] += expense.cost;
+  });
+  var food = expenseObj.food,
+      travel = expenseObj.travel,
+      health = expenseObj.health,
+      supplies = expenseObj.supplies;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "company-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Company Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "company-table"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Food ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", food.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Travel ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", travel.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Health ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", health.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Supplies ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", supplies.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Total ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "$", (food + travel + health + supplies).toFixed(2)))));
+}
 
 /***/ }),
 
@@ -436,6 +333,18 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -495,27 +404,65 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ExpenseForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
+    key: "calcExpenses",
+    value: function calcExpenses(user, parsedCost) {
+      var _this2 = this;
+
+      var expensesArr = _toConsumableArray(user.expensesSet);
+
+      var totalExpense = 0;
+      expensesArr.forEach(function (expense) {
+        if (expense === _this2.state.id) return;
+        totalExpense += _this2.props.expenses[expense].cost;
+      });
+      totalExpense += parsedCost;
+      return totalExpense.toFixed(2);
+    }
+  }, {
+    key: "handleValidations",
+    value: function handleValidations() {
       var _this$state = this.state,
-          id = _this$state.id,
           userId = _this$state.userId,
           category = _this$state.category,
           cost = _this$state.cost,
           date = _this$state.date;
-      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999)); // Validations
+      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
+      var errors = []; // Check all input fields for existence.
 
-      var errors = [];
-      if (!userId) errors.push("Please select a user!");
-      if (!category) errors.push("Please select a category!");
-      if (isNaN(parsedCost)) errors.push("Cost must be numerical!");
-      if (!date) errors.push("Please enter a date!");
+      if (!userId) errors.push("Please select a user.");
+      if (!category) errors.push("Please select a category.");
+      if (isNaN(parsedCost)) errors.push("Please enter a cost.");
+      if (!date) errors.push("Please enter a date.");
 
       if (errors.length !== 0) {
         alert(errors.join("\n"));
-        return;
-      }
+        return false;
+      } // Check if expense exceeds user's budget.
+
+
+      var user = this.props.users[userId];
+      var totalCost = this.calcExpenses(user, parsedCost);
+
+      if (user.budget < totalCost) {
+        alert("This expense exceeds this user's budget!");
+        return false;
+      } // All validations passed.
+
+
+      return true;
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var _this$state2 = this.state,
+          id = _this$state2.id,
+          userId = _this$state2.userId,
+          category = _this$state2.category,
+          cost = _this$state2.cost,
+          date = _this$state2.date;
+      var parsedCost = Math.max(0, Math.min(parseFloat(cost).toFixed(2), 9999999999));
+      if (!this.handleValidations()) return;
 
       if (this.props.expense) {
         var prevId = this.state.prevId;
@@ -555,18 +502,18 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var _this$state2 = this.state,
-          userId = _this$state2.userId,
-          category = _this$state2.category,
-          cost = _this$state2.cost,
-          date = _this$state2.date;
+      var _this$state3 = this.state,
+          userId = _this$state3.userId,
+          category = _this$state3.category,
+          cost = _this$state3.cost,
+          date = _this$state3.date;
       var mode = this.props.expense ? "Save" : "Add Expense";
       var userList;
 
       if (this.props.users) {
-        userList = this.props.users.map(function (user) {
+        userList = Object.values(this.props.users).map(function (user) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
             value: user.id,
             key: user.id
@@ -574,11 +521,11 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         });
       }
 
-      var categories = ["Food", "Travel", "Health", "Supplies"].map(function (cat) {
+      var categories = ["food", "travel", "health", "supplies"].map(function (cat) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
           value: cat,
           key: cat
-        }, cat);
+        }, cat[0].toUpperCase() + cat.slice(1));
       });
       var buttons;
 
@@ -586,11 +533,15 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
         buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "btn-alt",
           onClick: function onClick() {
-            return _this2.props.closeEdit();
+            return _this3.props.closeEdit();
           }
-        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode));
+        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode));
       } else {
-        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode);
+        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -601,24 +552,28 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         value: userId,
         onChange: function onChange(e) {
-          return _this2.handleInput("userId", e);
+          return _this3.handleInput("userId", e);
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select a user"), userList)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "Select a user"), userList)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         value: category,
         onChange: function onChange(e) {
-          return _this2.handleInput("category", e);
+          return _this3.handleInput("category", e);
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select a category"), categories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Cost:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: ""
+      }, "Select a category"), categories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Cost:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "number",
         onChange: function onChange(e) {
-          return _this2.handleInput("cost", e);
+          return _this3.handleInput("cost", e);
         },
         value: cost,
         step: "any"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "date",
         onChange: function onChange(e) {
-          return _this2.handleInput("date", e);
+          return _this3.handleInput("date", e);
         },
         value: date
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -643,128 +598,85 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ExpenseItem)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _expense_form_expense_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expense_form/expense_form */ "./src/components/expense_form/expense_form.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function ExpenseItem(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEditing = _useState2[0],
+      setEditing = _useState2[1];
 
-var ExpenseItem = /*#__PURE__*/function (_React$Component) {
-  _inherits(ExpenseItem, _React$Component);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showOptions = _useState4[0],
+      toggleOptions = _useState4[1];
 
-  var _super = _createSuper(ExpenseItem);
+  var users = props.users,
+      expenses = props.expenses,
+      expense = props.expense,
+      receiveExpense = props.receiveExpense,
+      removeExpense = props.removeExpense;
+  var userId = expense.userId,
+      category = expense.category,
+      cost = expense.cost,
+      date = expense.date;
+  if (!users[userId]) return null;
 
-  function ExpenseItem(props) {
-    var _this;
+  var closeEdit = function closeEdit() {
+    return setEditing(false);
+  };
 
-    _classCallCheck(this, ExpenseItem);
+  var item;
 
-    _this = _super.call(this, props);
-    _this.state = {
-      editing: false,
-      hover: false
-    };
-    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
-    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
-    _this.closeEdit = _this.closeEdit.bind(_assertThisInitialized(_this));
-    return _this;
+  if (isEditing) {
+    item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      receiveExpense: receiveExpense,
+      expenses: expenses,
+      expense: expense,
+      closeEdit: closeEdit,
+      users: users
+    });
+  } else {
+    item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "item-row"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category[0].toUpperCase() + category.slice(1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2)))), showOptions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "buttons-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      onClick: function onClick() {
+        return setEditing(true);
+      }
+    }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      onClick: function onClick() {
+        return removeExpense(expense);
+      }
+    }, "Delete")));
   }
 
-  _createClass(ExpenseItem, [{
-    key: "handleHover",
-    value: function handleHover() {
-      this.setState({
-        hover: !this.state.hover
-      });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "item-container",
+    onClick: function onClick() {
+      return toggleOptions(!showOptions);
     }
-  }, {
-    key: "handleEdit",
-    value: function handleEdit(e) {
-      e.preventDefault();
-      this.setState({
-        editing: true
-      });
-    }
-  }, {
-    key: "closeEdit",
-    value: function closeEdit() {
-      this.setState({
-        editing: false
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props$expense = this.props.expense,
-          userId = _this$props$expense.userId,
-          category = _this$props$expense.category,
-          cost = _this$props$expense.cost,
-          date = _this$props$expense.date;
-      var users = this.props.users;
-      var usersArr = Object.values(users);
-      if (!users[userId]) return null;
-      var item;
-
-      if (this.state.editing) {
-        item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_1__.default, {
-          receiveExpense: this.props.receiveExpense,
-          expense: this.props.expense,
-          closeEdit: this.closeEdit,
-          users: usersArr
-        });
-      } else {
-        item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "item-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(users[userId].firstName, " ").concat(users[userId].lastName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", cost.toFixed(2))), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "buttons-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleEdit
-        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: function onClick() {
-            return _this2.props.removeExpense(_this2.props.expense);
-          }
-        }, "Delete"))));
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "item-container",
-        onMouseEnter: this.handleHover,
-        onMouseLeave: this.handleHover
-      }, item);
-    }
-  }]);
-
-  return ExpenseItem;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItem);
+  }, item);
+}
 
 /***/ }),
 
@@ -777,81 +689,137 @@ var ExpenseItem = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ ExpenseTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../expense_item/expense_item */ "./src/components/expense_item/expense_item.jsx");
 /* harmony import */ var _expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../expense_form/expense_form */ "./src/components/expense_form/expense_form.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
+function ExpenseTable(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      filterUser = _useState2[0],
+      setFilterUser = _useState2[1];
 
-var ExpenseTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(ExpenseTable, _React$Component);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["all"]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      filterCategory = _useState4[0],
+      setFilterCategory = _useState4[1];
 
-  var _super = _createSuper(ExpenseTable);
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      filterDateStart = _useState6[0],
+      setFilterDateStart = _useState6[1];
 
-  function ExpenseTable(props) {
-    _classCallCheck(this, ExpenseTable);
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      filterDateEnd = _useState8[0],
+      setFilterDateEnd = _useState8[1];
 
-    return _super.call(this, props);
-  }
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      showFilters = _useState10[0],
+      toggleFilters = _useState10[1];
 
-  _createClass(ExpenseTable, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          users = _this$props.users,
-          expenses = _this$props.expenses,
-          receiveExpense = _this$props.receiveExpense,
-          removeExpense = _this$props.removeExpense;
-      var usersArr = Object.values(users);
-      var expensesList = expenses.map(function (expense, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
-          expense: expense,
-          key: i,
-          receiveExpense: receiveExpense,
-          removeExpense: removeExpense,
-          users: users
-        });
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "ui-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "ui-table"
-      }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
-        receiveExpense: this.props.receiveExpense,
-        users: usersArr
+  var users = props.users,
+      expenses = props.expenses,
+      receiveExpense = props.receiveExpense,
+      removeExpense = props.removeExpense;
+  var usersArr = Object.values(users);
+  var expensesArr = Object.values(expenses);
+  var userListOptions = usersArr.map(function (user) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: user.id,
+      key: user.id
+    }, "".concat(user.firstName, " ").concat(user.lastName));
+  });
+  var categoriesOptions = ["food", "travel", "health", "supplies"].map(function (cat) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: cat,
+      key: cat
+    }, cat[0].toUpperCase() + cat.slice(1));
+  });
+  var expensesList = expensesArr.map(function (expense, i) {
+    // Apply filters - don't add to the list unless it passes the filter
+    if (filterUser && filterUser != expense.userId) return;
+    if (!filterCategory.includes("all") && !filterCategory.includes(expense.category)) return;
+    if (filterDateStart && !(filterDateStart <= expense.date)) return;
+    if (filterDateEnd && !(filterDateEnd >= expense.date)) return;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_item_expense_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+      expense: expense,
+      key: i,
+      receiveExpense: receiveExpense,
+      removeExpense: removeExpense,
+      users: users,
+      expenses: expenses
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "ui-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "expenses-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return toggleFilters(!showFilters);
+    }
+  }, showFilters ? "Hide" : "Show", " Filters")), showFilters && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "filter-box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Filter By"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "filter-options"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    value: filterUser,
+    onChange: function onChange(e) {
+      return setFilterUser(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: ""
+  }, "All Users"), userListOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    className: "filter-category",
+    multiple: true,
+    value: filterCategory,
+    onChange: function onChange(e) {
+      return setFilterCategory(Array.from(e.target.selectedOptions, function (option) {
+        return option.value;
       }));
     }
-  }]);
-
-  return ExpenseTable;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseTable);
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+    value: "all"
+  }, "All Categories"), categoriesOptions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "filter-date"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Start Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "date",
+    value: filterDateStart,
+    onChange: function onChange(e) {
+      return setFilterDateStart(e.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "End Date:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "date",
+    value: filterDateEnd,
+    onChange: function onChange(e) {
+      return setFilterDateEnd(e.target.value);
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "ui-table"
+  }, expensesList), usersArr.length !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_expense_form_expense_form__WEBPACK_IMPORTED_MODULE_2__.default, {
+    receiveExpense: receiveExpense,
+    users: users,
+    expenses: expenses
+  }));
+}
 
 /***/ }),
 
@@ -876,7 +844,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     users: state.users,
-    expenses: Object.values(state.expenses)
+    expenses: state.expenses
   };
 };
 
@@ -940,6 +908,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -979,6 +959,7 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         id: _this.props.user.id,
         firstName: _this.props.user.firstName,
         lastName: _this.props.user.lastName,
+        budget: _this.props.user.budget,
         expensesSet: _this.props.user.expensesSet
       };
     } else {
@@ -986,6 +967,7 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         id: new Date().getTime(),
         firstName: "",
         lastName: "",
+        budget: "",
         expensesSet: new Set()
       };
     }
@@ -995,28 +977,76 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(UserForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
+    key: "calcExpenses",
+    value: function calcExpenses() {
+      var _this2 = this;
+
+      var expensesArr = _toConsumableArray(this.props.user.expensesSet);
+
+      var totalExpense = 0;
+      expensesArr.forEach(function (expense) {
+        if (!_this2.props.expenses[expense]) return;
+        totalExpense += _this2.props.expenses[expense].cost;
+      });
+      return totalExpense.toFixed(2);
+    }
+  }, {
+    key: "handleValidations",
+    value: function handleValidations() {
       var _this$state = this.state,
           firstName = _this$state.firstName,
-          lastName = _this$state.lastName; // Validations
+          lastName = _this$state.lastName,
+          budget = _this$state.budget;
+      var parsedBudget = Math.max(0, Math.min(parseFloat(budget).toFixed(2), 9999999999));
+      var errors = []; // Check all input fields for existence.
 
-      var errors = [];
       if (!firstName) errors.push("Please enter a first name.");
       if (!lastName) errors.push("Please enter a last name.");
+      if (isNaN(parsedBudget)) errors.push("Please enter a total budget.");
 
       if (errors.length !== 0) {
         alert(errors.join("\n"));
-        return;
-      }
+        return false;
+      } // If editing a user, check if new budget exceeds current total cost.
 
-      this.props.receiveUser(this.state); // Reset component after submitting.
+
+      if (this.props.user) {
+        var totalCost = this.calcExpenses();
+
+        if (totalCost > parsedBudget) {
+          alert("This user's new budget cannot exceed current expenses!");
+          return false;
+        }
+      } // All validations passed.
+
+
+      return true;
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var _this$state2 = this.state,
+          id = _this$state2.id,
+          firstName = _this$state2.firstName,
+          lastName = _this$state2.lastName,
+          budget = _this$state2.budget,
+          expensesSet = _this$state2.expensesSet;
+      var parsedBudget = Math.max(0, Math.min(parseFloat(budget).toFixed(2), 9999999999));
+      if (!this.handleValidations()) return;
+      this.props.receiveUser({
+        id: id,
+        firstName: firstName,
+        lastName: lastName,
+        budget: parsedBudget,
+        expensesSet: expensesSet
+      }); // Reset component after submitting.
 
       this.setState({
         id: new Date().getTime(),
         firstName: "",
         lastName: "",
+        budget: "",
         expensesSet: new Set()
       });
       if (this.props.user) this.props.closeEdit();
@@ -1029,12 +1059,12 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var _this$state2 = this.state,
-          firstName = _this$state2.firstName,
-          lastName = _this$state2.lastName,
-          errors = _this$state2.errors;
+      var _this$state3 = this.state,
+          firstName = _this$state3.firstName,
+          lastName = _this$state3.lastName,
+          budget = _this$state3.budget;
       var mode = this.props.user ? "Save" : "Add User";
       var buttons;
 
@@ -1042,11 +1072,15 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
         buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "btn-alt",
           onClick: function onClick() {
-            return _this2.props.closeEdit();
+            return _this3.props.closeEdit();
           }
-        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode));
+        }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode));
       } else {
-        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, mode);
+        buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "submit"
+        }, mode);
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1057,17 +1091,24 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "First Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         onChange: function onChange(e) {
-          return _this2.handleInput("firstName", e);
+          return _this3.handleInput("firstName", e);
         },
         value: firstName,
         placeholder: "First Name"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Last Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         onChange: function onChange(e) {
-          return _this2.handleInput("lastName", e);
+          return _this3.handleInput("lastName", e);
         },
         value: lastName,
         placeholder: "Last Name"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Total Budget:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "number",
+        onChange: function onChange(e) {
+          return _this3.handleInput("budget", e);
+        },
+        value: budget,
+        placeholder: "Total Budget"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "buttons-container"
       }, buttons)));
@@ -1090,159 +1131,111 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ UserItem)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _user_form_user_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user_form/user_form */ "./src/components/user_form/user_form.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function UserItem(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEditing = _useState2[0],
+      setEditing = _useState2[1];
 
-var UserItem = /*#__PURE__*/function (_React$Component) {
-  _inherits(UserItem, _React$Component);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showOptions = _useState4[0],
+      toggleOptions = _useState4[1];
 
-  var _super = _createSuper(UserItem);
+  var user = props.user,
+      expenses = props.expenses,
+      receiveUser = props.receiveUser,
+      removeUser = props.removeUser,
+      removeExpense = props.removeExpense;
+  var firstName = user.firstName,
+      lastName = user.lastName,
+      budget = user.budget,
+      expensesSet = user.expensesSet;
 
-  function UserItem(props) {
-    var _this;
+  var closeEdit = function closeEdit() {
+    return setEditing(false);
+  };
 
-    _classCallCheck(this, UserItem);
+  var handleDelete = function handleDelete() {
+    var expensesArr = _toConsumableArray(expensesSet);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      editing: false,
-      hover: false
-    };
-    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
-    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
-    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.closeEdit = _this.closeEdit.bind(_assertThisInitialized(_this));
-    return _this;
+    expensesArr.forEach(function (expense) {
+      return removeExpense(expenses[expense]);
+    });
+    removeUser(user);
+  };
+
+  var calcExpenses = function calcExpenses() {
+    var expensesArr = _toConsumableArray(expensesSet);
+
+    var totalExpense = 0;
+    expensesArr.forEach(function (expense) {
+      if (!expenses[expense]) return;
+      totalExpense += expenses[expense].cost;
+    });
+    return totalExpense.toFixed(2);
+  };
+
+  var item;
+
+  if (isEditing) {
+    item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_1__.default, {
+      receiveUser: receiveUser,
+      user: user,
+      expenses: expenses,
+      closeEdit: closeEdit
+    });
+  } else {
+    item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "item-row"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, firstName, " ", lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", calcExpenses(), " / $", budget.toFixed(2)))), showOptions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "buttons-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      onClick: function onClick() {
+        return setEditing(true);
+      }
+    }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      onClick: function onClick() {
+        return handleDelete();
+      }
+    }, "Delete")));
   }
 
-  _createClass(UserItem, [{
-    key: "handleHover",
-    value: function handleHover() {
-      this.setState({
-        hover: !this.state.hover
-      });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "item-container",
+    onClick: function onClick() {
+      return toggleOptions(!showOptions);
     }
-  }, {
-    key: "handleEdit",
-    value: function handleEdit(e) {
-      e.preventDefault();
-      this.setState({
-        editing: true
-      });
-    }
-  }, {
-    key: "handleDelete",
-    value: function handleDelete(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-
-      var expensesArr = _toConsumableArray(this.props.user.expensesSet);
-
-      expensesArr.forEach(function (expense) {
-        return _this2.props.removeExpense(_this2.props.expenses[expense]);
-      });
-      this.props.removeUser(this.props.user);
-    }
-  }, {
-    key: "closeEdit",
-    value: function closeEdit() {
-      this.setState({
-        editing: false
-      });
-    }
-  }, {
-    key: "calcExpenses",
-    value: function calcExpenses() {
-      var _this3 = this;
-
-      var expensesArr = _toConsumableArray(this.props.user.expensesSet);
-
-      var totalExpense = 0;
-      expensesArr.forEach(function (expense) {
-        if (!_this3.props.expenses[expense]) return;
-        totalExpense += _this3.props.expenses[expense].cost;
-      });
-      return totalExpense.toFixed(2);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props$user = this.props.user,
-          firstName = _this$props$user.firstName,
-          lastName = _this$props$user.lastName;
-      var item;
-
-      if (this.state.editing) {
-        item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_1__.default, {
-          receiveUser: this.props.receiveUser,
-          user: this.props.user,
-          closeEdit: this.closeEdit
-        });
-      } else {
-        item = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "item-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, firstName, " ", lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.calcExpenses())), this.state.hover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "buttons-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleEdit
-        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          onClick: this.handleDelete
-        }, "Delete"))));
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "item-container",
-        onMouseEnter: this.handleHover,
-        onMouseLeave: this.handleHover
-      }, item);
-    }
-  }]);
-
-  return UserItem;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserItem);
+  }, item);
+}
 
 /***/ }),
 
@@ -1255,81 +1248,38 @@ var UserItem = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ UserTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _user_item_user_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user_item/user_item */ "./src/components/user_item/user_item.jsx");
 /* harmony import */ var _user_form_user_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user_form/user_form */ "./src/components/user_form/user_form.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-
-
-var UserTable = /*#__PURE__*/function (_React$Component) {
-  _inherits(UserTable, _React$Component);
-
-  var _super = _createSuper(UserTable);
-
-  function UserTable(props) {
-    _classCallCheck(this, UserTable);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(UserTable, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          users = _this$props.users,
-          expenses = _this$props.expenses,
-          receiveUser = _this$props.receiveUser,
-          removeUser = _this$props.removeUser,
-          removeExpense = _this$props.removeExpense;
-      var usersList = users.map(function (user, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_item_user_item__WEBPACK_IMPORTED_MODULE_1__.default, {
-          user: user,
-          key: i,
-          receiveUser: receiveUser,
-          removeUser: removeUser,
-          expenses: expenses,
-          removeExpense: removeExpense
-        });
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "ui-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "ui-table"
-      }, usersList), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_2__.default, {
-        receiveUser: this.props.receiveUser
-      }));
-    }
-  }]);
-
-  return UserTable;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserTable);
+function UserTable(props) {
+  var users = props.users,
+      expenses = props.expenses,
+      receiveUser = props.receiveUser,
+      removeUser = props.removeUser,
+      removeExpense = props.removeExpense;
+  var usersList = users.map(function (user, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_item_user_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+      user: user,
+      key: i,
+      receiveUser: receiveUser,
+      removeUser: removeUser,
+      expenses: expenses,
+      removeExpense: removeExpense
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "ui-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "ui-table"
+  }, usersList), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_form_user_form__WEBPACK_IMPORTED_MODULE_2__.default, {
+    receiveUser: receiveUser
+  }));
+}
 
 /***/ }),
 
@@ -1399,13 +1349,6 @@ var expensesReducer = function expensesReducer() {
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
-    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXPS:
-      var newState = {};
-      action.expenses.forEach(function (expense) {
-        newState[expense.id] = expense;
-      });
-      return newState;
-
     case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXP:
       nextState[action.expense.id] = action.expense;
       delete nextState[action.expense.id]["prevId"];
@@ -1472,13 +1415,6 @@ var usersReducer = function usersReducer() {
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USERS:
-      var newState = {};
-      action.users.forEach(function (user) {
-        newState[user.id] = user;
-      });
-      return newState;
-
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_USER:
       nextState[action.user.id] = action.user;
       return nextState;
@@ -1518,14 +1454,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _reducers_root_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/root_reducer */ "./src/reducers/root_reducer.js");
+/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
+/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_1__);
 
- // import logger from "redux-logger";
+
+
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return (0,redux__WEBPACK_IMPORTED_MODULE_1__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_0__.default, preloadedState); // return createStore(rootReducer, preloadedState, applyMiddleware(logger));
+  // return createStore(rootReducer, preloadedState);
+  return (0,redux__WEBPACK_IMPORTED_MODULE_2__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_0__.default, preloadedState, (0,redux__WEBPACK_IMPORTED_MODULE_2__.applyMiddleware)((redux_logger__WEBPACK_IMPORTED_MODULE_1___default())));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
@@ -33096,6 +33036,17 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/redux-logger/dist/redux-logger.js":
+/*!********************************************************!*\
+  !*** ./node_modules/redux-logger/dist/redux-logger.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+!function(e,t){ true?t(exports):0}(this,function(e){"use strict";function t(e,t){e.super_=t,e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}})}function r(e,t){Object.defineProperty(this,"kind",{value:e,enumerable:!0}),t&&t.length&&Object.defineProperty(this,"path",{value:t,enumerable:!0})}function n(e,t,r){n.super_.call(this,"E",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0}),Object.defineProperty(this,"rhs",{value:r,enumerable:!0})}function o(e,t){o.super_.call(this,"N",e),Object.defineProperty(this,"rhs",{value:t,enumerable:!0})}function i(e,t){i.super_.call(this,"D",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0})}function a(e,t,r){a.super_.call(this,"A",e),Object.defineProperty(this,"index",{value:t,enumerable:!0}),Object.defineProperty(this,"item",{value:r,enumerable:!0})}function f(e,t,r){var n=e.slice((r||t)+1||e.length);return e.length=t<0?e.length+t:t,e.push.apply(e,n),e}function u(e){var t="undefined"==typeof e?"undefined":N(e);return"object"!==t?t:e===Math?"math":null===e?"null":Array.isArray(e)?"array":"[object Date]"===Object.prototype.toString.call(e)?"date":"function"==typeof e.toString&&/^\/.*\//.test(e.toString())?"regexp":"object"}function l(e,t,r,c,s,d,p){s=s||[],p=p||[];var g=s.slice(0);if("undefined"!=typeof d){if(c){if("function"==typeof c&&c(g,d))return;if("object"===("undefined"==typeof c?"undefined":N(c))){if(c.prefilter&&c.prefilter(g,d))return;if(c.normalize){var h=c.normalize(g,d,e,t);h&&(e=h[0],t=h[1])}}}g.push(d)}"regexp"===u(e)&&"regexp"===u(t)&&(e=e.toString(),t=t.toString());var y="undefined"==typeof e?"undefined":N(e),v="undefined"==typeof t?"undefined":N(t),b="undefined"!==y||p&&p[p.length-1].lhs&&p[p.length-1].lhs.hasOwnProperty(d),m="undefined"!==v||p&&p[p.length-1].rhs&&p[p.length-1].rhs.hasOwnProperty(d);if(!b&&m)r(new o(g,t));else if(!m&&b)r(new i(g,e));else if(u(e)!==u(t))r(new n(g,e,t));else if("date"===u(e)&&e-t!==0)r(new n(g,e,t));else if("object"===y&&null!==e&&null!==t)if(p.filter(function(t){return t.lhs===e}).length)e!==t&&r(new n(g,e,t));else{if(p.push({lhs:e,rhs:t}),Array.isArray(e)){var w;e.length;for(w=0;w<e.length;w++)w>=t.length?r(new a(g,w,new i(void 0,e[w]))):l(e[w],t[w],r,c,g,w,p);for(;w<t.length;)r(new a(g,w,new o(void 0,t[w++])))}else{var x=Object.keys(e),S=Object.keys(t);x.forEach(function(n,o){var i=S.indexOf(n);i>=0?(l(e[n],t[n],r,c,g,n,p),S=f(S,i)):l(e[n],void 0,r,c,g,n,p)}),S.forEach(function(e){l(void 0,t[e],r,c,g,e,p)})}p.length=p.length-1}else e!==t&&("number"===y&&isNaN(e)&&isNaN(t)||r(new n(g,e,t)))}function c(e,t,r,n){return n=n||[],l(e,t,function(e){e&&n.push(e)},r),n.length?n:void 0}function s(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":s(o[r.path[n]],r.index,r.item);break;case"D":delete o[r.path[n]];break;case"E":case"N":o[r.path[n]]=r.rhs}}else switch(r.kind){case"A":s(e[t],r.index,r.item);break;case"D":e=f(e,t);break;case"E":case"N":e[t]=r.rhs}return e}function d(e,t,r){if(e&&t&&r&&r.kind){for(var n=e,o=-1,i=r.path?r.path.length-1:0;++o<i;)"undefined"==typeof n[r.path[o]]&&(n[r.path[o]]="number"==typeof r.path[o]?[]:{}),n=n[r.path[o]];switch(r.kind){case"A":s(r.path?n[r.path[o]]:n,r.index,r.item);break;case"D":delete n[r.path[o]];break;case"E":case"N":n[r.path[o]]=r.rhs}}}function p(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":p(o[r.path[n]],r.index,r.item);break;case"D":o[r.path[n]]=r.lhs;break;case"E":o[r.path[n]]=r.lhs;break;case"N":delete o[r.path[n]]}}else switch(r.kind){case"A":p(e[t],r.index,r.item);break;case"D":e[t]=r.lhs;break;case"E":e[t]=r.lhs;break;case"N":e=f(e,t)}return e}function g(e,t,r){if(e&&t&&r&&r.kind){var n,o,i=e;for(o=r.path.length-1,n=0;n<o;n++)"undefined"==typeof i[r.path[n]]&&(i[r.path[n]]={}),i=i[r.path[n]];switch(r.kind){case"A":p(i[r.path[n]],r.index,r.item);break;case"D":i[r.path[n]]=r.lhs;break;case"E":i[r.path[n]]=r.lhs;break;case"N":delete i[r.path[n]]}}}function h(e,t,r){if(e&&t){var n=function(n){r&&!r(e,t,n)||d(e,t,n)};l(e,t,n)}}function y(e){return"color: "+F[e].color+"; font-weight: bold"}function v(e){var t=e.kind,r=e.path,n=e.lhs,o=e.rhs,i=e.index,a=e.item;switch(t){case"E":return[r.join("."),n,"→",o];case"N":return[r.join("."),o];case"D":return[r.join(".")];case"A":return[r.join(".")+"["+i+"]",a];default:return[]}}function b(e,t,r,n){var o=c(e,t);try{n?r.groupCollapsed("diff"):r.group("diff")}catch(e){r.log("diff")}o?o.forEach(function(e){var t=e.kind,n=v(e);r.log.apply(r,["%c "+F[t].text,y(t)].concat(P(n)))}):r.log("—— no diff ——");try{r.groupEnd()}catch(e){r.log("—— diff end —— ")}}function m(e,t,r,n){switch("undefined"==typeof e?"undefined":N(e)){case"object":return"function"==typeof e[n]?e[n].apply(e,P(r)):e[n];case"function":return e(t);default:return e}}function w(e){var t=e.timestamp,r=e.duration;return function(e,n,o){var i=["action"];return i.push("%c"+String(e.type)),t&&i.push("%c@ "+n),r&&i.push("%c(in "+o.toFixed(2)+" ms)"),i.join(" ")}}function x(e,t){var r=t.logger,n=t.actionTransformer,o=t.titleFormatter,i=void 0===o?w(t):o,a=t.collapsed,f=t.colors,u=t.level,l=t.diff,c="undefined"==typeof t.titleFormatter;e.forEach(function(o,s){var d=o.started,p=o.startedTime,g=o.action,h=o.prevState,y=o.error,v=o.took,w=o.nextState,x=e[s+1];x&&(w=x.prevState,v=x.started-d);var S=n(g),k="function"==typeof a?a(function(){return w},g,o):a,j=D(p),E=f.title?"color: "+f.title(S)+";":"",A=["color: gray; font-weight: lighter;"];A.push(E),t.timestamp&&A.push("color: gray; font-weight: lighter;"),t.duration&&A.push("color: gray; font-weight: lighter;");var O=i(S,j,v);try{k?f.title&&c?r.groupCollapsed.apply(r,["%c "+O].concat(A)):r.groupCollapsed(O):f.title&&c?r.group.apply(r,["%c "+O].concat(A)):r.group(O)}catch(e){r.log(O)}var N=m(u,S,[h],"prevState"),P=m(u,S,[S],"action"),C=m(u,S,[y,h],"error"),F=m(u,S,[w],"nextState");if(N)if(f.prevState){var L="color: "+f.prevState(h)+"; font-weight: bold";r[N]("%c prev state",L,h)}else r[N]("prev state",h);if(P)if(f.action){var T="color: "+f.action(S)+"; font-weight: bold";r[P]("%c action    ",T,S)}else r[P]("action    ",S);if(y&&C)if(f.error){var M="color: "+f.error(y,h)+"; font-weight: bold;";r[C]("%c error     ",M,y)}else r[C]("error     ",y);if(F)if(f.nextState){var _="color: "+f.nextState(w)+"; font-weight: bold";r[F]("%c next state",_,w)}else r[F]("next state",w);l&&b(h,w,r,k);try{r.groupEnd()}catch(e){r.log("—— log end ——")}})}function S(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=Object.assign({},L,e),r=t.logger,n=t.stateTransformer,o=t.errorTransformer,i=t.predicate,a=t.logErrors,f=t.diffPredicate;if("undefined"==typeof r)return function(){return function(e){return function(t){return e(t)}}};if(e.getState&&e.dispatch)return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"),function(){return function(e){return function(t){return e(t)}}};var u=[];return function(e){var r=e.getState;return function(e){return function(l){if("function"==typeof i&&!i(r,l))return e(l);var c={};u.push(c),c.started=O.now(),c.startedTime=new Date,c.prevState=n(r()),c.action=l;var s=void 0;if(a)try{s=e(l)}catch(e){c.error=o(e)}else s=e(l);c.took=O.now()-c.started,c.nextState=n(r());var d=t.diff&&"function"==typeof f?f(r,l):t.diff;if(x(u,Object.assign({},t,{diff:d})),u.length=0,c.error)throw c.error;return s}}}}var k,j,E=function(e,t){return new Array(t+1).join(e)},A=function(e,t){return E("0",t-e.toString().length)+e},D=function(e){return A(e.getHours(),2)+":"+A(e.getMinutes(),2)+":"+A(e.getSeconds(),2)+"."+A(e.getMilliseconds(),3)},O="undefined"!=typeof performance&&null!==performance&&"function"==typeof performance.now?performance:Date,N="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},P=function(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)},C=[];k="object"===("undefined"==typeof __webpack_require__.g?"undefined":N(__webpack_require__.g))&&__webpack_require__.g?__webpack_require__.g:"undefined"!=typeof window?window:{},j=k.DeepDiff,j&&C.push(function(){"undefined"!=typeof j&&k.DeepDiff===c&&(k.DeepDiff=j,j=void 0)}),t(n,r),t(o,r),t(i,r),t(a,r),Object.defineProperties(c,{diff:{value:c,enumerable:!0},observableDiff:{value:l,enumerable:!0},applyDiff:{value:h,enumerable:!0},applyChange:{value:d,enumerable:!0},revertChange:{value:g,enumerable:!0},isConflict:{value:function(){return"undefined"!=typeof j},enumerable:!0},noConflict:{value:function(){return C&&(C.forEach(function(e){e()}),C=null),c},enumerable:!0}});var F={E:{color:"#2196F3",text:"CHANGED:"},N:{color:"#4CAF50",text:"ADDED:"},D:{color:"#F44336",text:"DELETED:"},A:{color:"#2196F3",text:"ARRAY:"}},L={level:"log",logger:console,logErrors:!0,collapsed:void 0,predicate:void 0,duration:!1,timestamp:!0,stateTransformer:function(e){return e},actionTransformer:function(e){return e},errorTransformer:function(e){return e},colors:{title:function(){return"inherit"},prevState:function(){return"#9E9E9E"},action:function(){return"#03A9F4"},nextState:function(){return"#4CAF50"},error:function(){return"#F20404"}},diff:!1,diffPredicate:void 0,transformer:void 0},T=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.dispatch,r=e.getState;return"function"==typeof t||"function"==typeof r?S()({dispatch:t,getState:r}):void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n")};e.defaults=L,e.createLogger=S,e.logger=T,e.default=T,Object.defineProperty(e,"__esModule",{value:!0})});
+
+
+/***/ }),
+
 /***/ "./node_modules/redux/es/redux.js":
 /*!****************************************!*\
   !*** ./node_modules/redux/es/redux.js ***!
@@ -34868,7 +34819,7 @@ if (false) {} else {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -34897,6 +34848,18 @@ if (false) {} else {
 /******/ 				}
 /******/ 			}
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

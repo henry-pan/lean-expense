@@ -5,7 +5,7 @@ import ExpenseTable from "./expense_table";
 
 const mapStateToProps = state => ({
   users: state.users,
-  expenses: Object.values(state.expenses)
+  expenses: state.expenses
 });
 
 const mapDispatchToProps = dispatch => ({

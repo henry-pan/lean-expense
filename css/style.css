@@ -3,6 +3,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+::selection {
+  background: #81d3a9;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #70797b;
@@ -43,7 +47,7 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -114,7 +118,8 @@ select {
 .ui-table {
   border: 1px solid #f0f0f0;
   padding: 5px 5px;
-  height: calc(75vh - 200px);
+  height: calc(75vh - 270px);
+  border-radius: 5px;
   overflow-y: auto;
   margin-bottom: 10px;
 }
@@ -125,11 +130,14 @@ select {
   padding: 0 5px;
 }
 
+.buttons-container button:last-child {
+  margin-left: 10px;
+}
+
 .btn-alt {
   border: 1px solid #4d4d4d;
   background-color: transparent;
   color: #4d4d4d;
-  margin-right: 10px;
 }
 
 .btn-alt:hover {
@@ -170,6 +178,8 @@ select {
   padding: 5px;
   margin-bottom: 5px;
   min-height: 32px;
+  transition: background-color .25s, border .25s;
+  cursor: pointer;
 }
 
 .item-container:last-child {
@@ -187,14 +197,21 @@ select {
   align-items: center;
 }
 
-/* .item + .buttons-container {
-  margin-top: 5px;
-} */
-
 .item-row {
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
+}
+
+.item-row p {
+  width: 25%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-row p:last-child {
+  text-align: right;
 }
 
 .company-section {
@@ -207,24 +224,80 @@ select {
 .company-table h3:last-child {
   border-top: 1px solid #f0f0f0;
   padding-top: 10px;
-  font-size: 32px;
+  font-size: 24px;
 }
 
-@media only screen and (max-width: 1050px) {
+.expenses-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expenses-header button {
+  height: 32px;
+}
+
+.filter-box {
+  display: flex;
+  border: 1px solid #f0f0f0;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.filter-box + .ui-table {
+  height: calc(70vh - 320px);
+}
+
+.filter-options {
+  display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.filter-category {
+  height: 100%;
+}
+
+.filter-date {
+  max-width: 250px;
+  margin-left: 10px;
+  box-sizing: border-box;
+}
+
+.filter-date label{
+  justify-content: space-between;
+}
+
+.filter-date input {
+  width: 145px;
+  flex-grow: 0;
+}
+
+@media only screen and (max-width: 1200px) {
   button {
     padding: 5px 10px;
   }
+  
+  h2 {
+    font-size: 26px;
+  }
 
   h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   .company-table h3:last-child {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 750px) {
+  header {
+    height: 50px;
+  }
+
   button {
     padding: 5px 20px;
   }
@@ -234,16 +307,20 @@ select {
   }
 
   h3 {
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   }
 
+  p {
+    font-size: 14px;
+  }
+
   .company-table h3:last-child {
     border-top: 1px solid #f0f0f0;
     padding-top: 10px;
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .content {
@@ -259,5 +336,36 @@ select {
   .company-section {
     width: 100%;
     padding-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  header {
+    height: 40px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+  
+  p {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 3px 7px;
+  }
+
+  .filter-options {
+    flex-direction: column;
+  }
+
+  .filter-options select:first-child {
+    margin-left: 0;
+  }
+
+  .filter-category {
+    margin-left: 0;
   }
 }

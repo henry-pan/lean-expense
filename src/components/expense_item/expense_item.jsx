@@ -1,71 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseForm from "../expense_form/expense_form";
 
-class ExpenseItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editing: false,
-      hover: false
-    }
-    this.handleHover = this.handleHover.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-    this.closeEdit = this.closeEdit.bind(this);
-  }
+export default function ExpenseItem(props) {
+  const [isEditing, setEditing] = useState(false);
+  const [showOptions, toggleOptions] = useState(false);
 
-  handleHover() {
-    this.setState({ hover: !this.state.hover });
-  }
+  const { users, expenses, expense, receiveExpense, removeExpense } = props;
+  const { userId, category, cost, date } = expense;
+  if (!users[userId]) return null;
 
-  handleEdit(e) {
-    e.preventDefault();
-    this.setState({editing: true});
-  }
+  const closeEdit = () => setEditing(false);
 
-  closeEdit() {
-    this.setState({editing: false});
-  }
-
-  render() {
-    const {userId, category, cost, date} = this.props.expense;
-    const {users} = this.props;
-    const usersArr = Object.values(users);
-
-    if (!users[userId]) return null;
-
-    let item;
-    if (this.state.editing) {
-      item =
-        <ExpenseForm receiveExpense={this.props.receiveExpense}
-          expense={this.props.expense}
-          closeEdit={this.closeEdit}
-          users={usersArr}/>;
-    } else {
-      item = <>
-        <div className="item">
-          <div className="item-row">
-            <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
-            <p>{date}</p>
-            <p>{category}</p>
-            <p>${cost.toFixed(2)}</p>
-          </div>
-          {this.state.hover &&
-            <div className="buttons-container">
-              <button onClick={this.handleEdit}>Edit</button>
-              <button onClick={() => this.props.removeExpense(this.props.expense)}>Delete</button>
-            </div>
-          }
+  
+  let item;
+  if (isEditing) {
+    item =
+      <ExpenseForm receiveExpense={receiveExpense}
+        expenses={expenses}
+        expense={expense}
+        closeEdit={closeEdit}
+        users={users}/>;
+  } else {
+    item = <>
+      <div className="item">
+        <div className="item-row">
+          <p>{`${users[userId].firstName} ${users[userId].lastName}`}</p>
+          <p>{date}</p>
+          <p>{category[0].toUpperCase() + category.slice(1)}</p>
+          <p>${cost.toFixed(2)}</p>
         </div>
-      </>;
-    }
-
-    return (
-      <div className="item-container" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-        {item}
       </div>
-    );
+      {showOptions &&
+        <div className="buttons-container">
+          <button onClick={() => setEditing(true)}>Edit</button>
+          <button onClick={() => removeExpense(expense)}>Delete</button>
+        </div>
+      }
+    </>;
   }
 
+  return (
+    <div className="item-container" onClick={() => toggleOptions(!showOptions)}>
+      {item}
+    </div>
+  );
 }
-
-export default ExpenseItem;
